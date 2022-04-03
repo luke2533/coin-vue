@@ -340,3 +340,22 @@ Additions:
 - testing.md file added
 - README 5.0 Testing added
 - README 6.0 Devlopment cycle added
+
+### 6.5
+
+Additions:
+
+- Added requirments.txt
+- Added Procfile
+
+## 7.0 Deployment
+
+### 7.1 Local deployment
+
+### 7.2 Heroku deployment
+
+## 8.0 Credits
+
+### 8.1 Content
+
+### 8.2 Code
