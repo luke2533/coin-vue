@@ -392,6 +392,12 @@ Additions:
 - Added Nav
 - Created style.css file
 
+### 6.11 Footer added
+
+Additions:
+
+- Footer added
+
 ## 7.0 Deployment
 
 ### 7.1 Local deployment
