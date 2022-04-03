@@ -373,6 +373,18 @@ Additions:
 - Added font awesome to base.html
 - Added jQuery to base.html
 
+### 6.9 Static folder and wireframes added
+
+Additions:
+
+- Static folder
+- CSS folder
+- JS folder
+- Wireframes folder
+- Mockups folder
+- Updated README 2.4 Wireframes
+- Added wireframes images and pdf
+
 ## 7.0 Deployment
 
 ### 7.1 Local deployment
