@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@300;400;700&family=Prompt:wght@300;400;700&display=swap');
+
+/* Universal */
+
+body {
+    background-image: linear-gradient(#0d1117, #161b22, #0d1117);
+    color: #FFAC5E;
+    font-family: "Exo 2", sans-serif;
+}
+
+h1 {
+    font-family: "Prompt", sans-serif;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+/* Universal */
+
+/* Nav-bar */
+
+.nav-bar {
+    background-color: #161b22;
+    height: 125px;
+    align-items: center;
+}
+
+.logo {
+    border-radius: 50%;
+    height: 100px;
+    width: 100px;
+}
+
+.nav-title {
+    text-align: center;
+    color: #FFAC5E;
+    margin-top: 20px;
+    margin-left: 10px;
+    font-size: 2em;
+}
+
+.nav-title:hover {
+    color: white;
+}
+
+.nav-item {
+    font-size: 1.5em;
+}
+
+.nav-link {
+    background-color: #0d1117;
+    box-shadow: 1px 1px 1px black;
+    color: #FFAC5E;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 10px;
+}
+
+.nav-link:hover {
+    background-color: #FFAC5E;
+    color: black;
+}
+
+.nav-link:hover .nav-icon {
+    color: black;
+}
+
+.nav-icon {
+    font-size: 1em;
+    color: #FFAC5E;
+    margin: 5px;
+}
+
+/* Nav-bar */

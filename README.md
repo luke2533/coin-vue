@@ -385,6 +385,13 @@ Additions:
 - Updated README 2.4 Wireframes
 - Added wireframes images and pdf
 
+### 6.10 Added nav and style.css file
+
+Additions:
+
+- Added Nav
+- Created style.css file
+
 ## 7.0 Deployment
 
 ### 7.1 Local deployment
