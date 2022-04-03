@@ -305,6 +305,10 @@ MongoDB is used as the database to store user accounts, portfolios and records
 
 
 
+## 5.0 Testing
+
+[Click here for Testing document](testing.md)
+
 ## 6.0 Devlopment life cycle
 
 ### 6.1 Initial commit
@@ -328,3 +332,11 @@ Additions:
 
 - README 3.0 Features added
 - README 4.0 Technologies used added
+
+### 6.4 Testing file, README 5.0 and 6.0 added
+
+Additions:
+
+- testing.md file added
+- README 5.0 Testing added
+- README 6.0 Devlopment cycle added
