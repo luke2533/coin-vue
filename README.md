@@ -341,7 +341,7 @@ Additions:
 - README 5.0 Testing added
 - README 6.0 Devlopment cycle added
 
-### 6.5
+### 6.5 Set up for heroku
 
 Additions:
 
