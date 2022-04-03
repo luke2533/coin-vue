@@ -1,6 +1,0 @@
-click==8.1.2
-Flask==2.1.1
-heroku==0.1.4
-itsdangerous==2.1.2
-python-dateutil==1.5
-Werkzeug==2.1.1

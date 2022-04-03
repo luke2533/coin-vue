@@ -345,8 +345,17 @@ Additions:
 
 Additions:
 
-- Added requirments.txt
+- Added requirements.txt
 - Added Procfile
+
+### 6.6 Successfully deployed to heroku
+
+Additions:
+
+- Installed flask-pymongo
+- Installed dnspython
+- Updated requirements.txt
+- Successfully deployed to heroku
 
 ## 7.0 Deployment
 
