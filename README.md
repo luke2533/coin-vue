@@ -242,6 +242,69 @@ Delete Modal Universal mockup:
 
 ![](static/mockups/.png)
 
+## 3.0 Features
+
+### 3.1 Existing features
+
+- Crypto price tracker - Home page with the top 50 cryptos
+- Personal portfolio - Users portfolio tracking the users transaction records
+- Sign up page - Personal user accounts
+- Log in / out - Log in and out to change accounts
+- Buy records - Buy transaction record for new purchases
+- Sell records - Sell transaction to keep track of profits
+- Staking rewards records - Rewards from passive income coins
+- Edit records - Change pre existing records
+- Delete records - Permanently remove records
+- Updated portfolio performance - Updates changes in value when user reloads page
+
+### 3.2 Features left to implement
+
+- Share portfolios - Users could view and share portfolios on discover page to better improve their trading stratergy 
+- Public and private portfolios - Users could have option to share or private there portfolios
+- Add transfer records - Crypto sent to or from others could be recorded 
+- Change password - Users could change their password if they forgot or wanted to make it more secure
+- Search bar for assets - Search bar to better filter down cryptocurrencies
+- Crypto info page - Pages for each crypto with further information on them
+- ChartJS portfolio chart - Chart to track and visualize portfolio history
+
+## 4.0 Technologies used
+
+### 4.1 HTML5
+
+HTML5 used to structure the websites information
+
+### 4.2 CSS3
+
+CSS3 used to style, structure and responsive on all devices
+
+### 4.3 Bootstrap 4.5
+
+CSS libary with pre-existing class and id's to speed up development
+
+### 4.4 JavaScript
+
+JavaScript makes this project interactable for users
+
+### 4.5 jQuery
+
+jQuery used to shortan JS being written and for bootstrap elements such as modals, accordians and dropdown menus
+
+### 4.6 Python 3
+
+Python is used for backend functionality between user, website and mongoDB.
+
+### 4.7 Flask
+
+Flask is used for HTML templates, URL routing making devlopement more efficient
+
+### 4.8 MongoDB
+
+MongoDB is used as the database to store user accounts, portfolios and records
+
+### 4.9 Coincap API
+
+
+
 ## 6.0 Devlopment life cycle
 
 ### 6.1 Initial commit
@@ -258,3 +321,10 @@ Additions:
 Additions:
 
 - README 2.0 Design choices added
+
+### 6.3 README 3.0 and 4.0 added
+
+Additions:
+
+- README 3.0 Features added
+- README 4.0 Technologies used added
