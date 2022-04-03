@@ -364,6 +364,15 @@ Additions:
 - Connected to mongoDB via URI
 - Created index.html
 
+### 6.8 Basic base template setup
+
+Additions:
+
+- Created base.html
+- Added bootstrap to base.html
+- Added font awesome to base.html
+- Added jQuery to base.html
+
 ## 7.0 Deployment
 
 ### 7.1 Local deployment
