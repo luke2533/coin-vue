@@ -357,6 +357,13 @@ Additions:
 - Updated requirements.txt
 - Successfully deployed to heroku
 
+### 6.7 Created home page and connected to mongoDB
+
+Additions:
+
+- Connected to mongoDB via URI
+- Created index.html
+
 ## 7.0 Deployment
 
 ### 7.1 Local deployment
