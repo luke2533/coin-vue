@@ -68,6 +68,180 @@ CoinVue’s target audience are crypto retail investors interested in live marke
 
 1.4.6 The user has sold some of their crypto and wishes to record the sale, to do this the user goes to the portfolio page clicks add transaction and selects the sell tab. The user then can fill out the quantity of tokens sold, the price each token was valued at, date and optionally add a note.
 
+## 2.0 Design choices
+
+### 2.1 Fonts
+
+Titles and subtitles will be in [Prompt](https://fonts.google.com/specimen/Prompt?query=prompt):
+
+Text will be in [Exo-2](https://fonts.google.com/specimen/Exo+2?query=exo+2):
+
+### 2.2 Icons
+
+[Font awesome:](https://fontawesome.com/)
+
+- YouTube icon
+- Facebook icon
+- Instagram icon
+- Twitter icon
+- Home icon (Home page)
+- Coins icon (Portfolio page)
+- User icon (Log in page)
+- Edit icon (Delete modal)
+- Delete icon (Delete button)
+- Ellipsis vertical (Action button)
+
+### 2.3 Colors
+
+- #FFAC5E - Primary color for text
+- #161B22 - Nav and Footer background
+- #070A0F - Portfolio background color
+- #0D1117 - Background color
+
+### 2.4 Wireframes
+
+[Wireframe pdf](static/wireframes/CoinVue.pdf)
+
+Home Desktop wireframe:
+
+![Home page desktop](static/wireframes/home-desktop.png)
+
+Home Tablet wireframe:
+
+![Home page tablet](static/wireframes/home-tablet.png)
+
+Home Mobile wireframe:
+
+![Home page mobile](static/wireframes/home-mobile.png)
+
+Portfolio Desktop wireframe:
+
+![Portfolio page desktop](static/wireframes/portfolio-desktop.png)
+
+Portfolio Tablet wireframe:
+
+![Portfolio page tablet](static/wireframes/portfolio-tablet.png)
+
+Portfolio Mobile wireframe:
+
+![Portfolio page mobile](static/wireframes/portfolio-mobile.png)
+
+Sign up Desktop wireframe:
+
+![Sign up page desktop](static/wireframes/signup-desktop.png)
+
+Sign up Tablet wireframe:
+
+![Sign up page tablet](static/wireframes/signup-tablet.png)
+
+Sign up Mobile wireframe:
+
+![Sign up page mobile](static/wireframes/signup-mobile.png)
+
+Log in Desktop wireframe:
+
+![Log in page desktop](static/wireframes/login-desktop.png)
+
+Log in Tablet wireframe:
+
+![Log in page tablet](static/wireframes/login-tablet.png)
+
+Log in Mobile wireframe:
+
+![Log in page mobile](static/wireframes/login-mobile.png)
+
+Transaction Modal Universal wireframe:
+
+![Transaction modal universal](static/wireframes/transaction-universal.png)
+
+Edit Modal Universal wireframe:
+
+![Edit modal universal](static/wireframes/edit-universal.png)
+
+Record Modal Desktop wireframe:
+
+![Record modal desktop](static/wireframes/record-desktop.png)
+
+Record Modal Mobile wireframe:
+
+![Record modal mobile](static/wireframes/record-mobile.png)
+
+Delete Modal Universal wireframe:
+
+![Delete modal universal](static/wireframes/delete-universal.png)
+
+### 2.5 Mockups
+
+[Mockup pdf](static/mockups/)
+
+Home Desktop mockup:
+
+![](static/mockups/.png)
+
+Home Tablet mockup:
+
+![](static/mockups/.png)
+
+Home Mobile mockup:
+
+![](static/mockups/.png)
+
+Portfolio Desktop mockup:
+
+![](static/mockups/.png)
+
+Portfolio Tablet mockup:
+
+![](static/mockups/.png)
+
+Portfolio Mobile mockup:
+
+![](static/mockups/.png)
+
+Sign up Desktop mockup:
+
+![](static/mockups/.png)
+
+Sign up Tablet mockup:
+
+![](static/mockups/.png)
+
+Sign up Mobile mockup:
+
+![](static/mockups/.png)
+
+Log in Desktop mockup:
+
+![](static/mockups/.png)
+
+Log in Tablet mockup:
+
+![](static/mockups/.png)
+
+Log in Mobile mockup:
+
+![](static/mockups/.png)
+
+Transaction Modal Universal mockup:
+
+![](static/mockups/.png)
+
+Edit Modal Universal mockup:
+
+![](static/mockups/.png)
+
+Record Modal Desktop mockup:
+
+![](static/mockups/.png)
+
+Record Modal Mobile mockup:
+
+![](static/mockups/.png)
+
+Delete Modal Universal mockup:
+
+![](static/mockups/.png)
+
 ## 6.0 Devlopment life cycle
 
 ### 6.1 Initial commit
@@ -78,3 +252,9 @@ Additions:
 - env.py
 - app.py
 - Created and set up Flask app
+
+### 6.2 README 2.0 Design choices added
+
+Additions:
+
+- README 2.0 Design choices added
