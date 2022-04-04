@@ -475,6 +475,13 @@ Additions:
 - Record page basic layout
 - Record page displays users records
 
+### 6.22 Record page responsive on all devices and home page rows have unique rows
+
+Additions:
+
+- Record page responsive on all devices
+- Each row on home page has unique ID
+
 ## 7.0 Deployment
 
 ### 7.1 Local deployment

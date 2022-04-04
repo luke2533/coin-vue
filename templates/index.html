@@ -26,23 +26,28 @@
                                 <th scope="col">24h%</th>
                                 <th scope="col">Market Cap</th>
                                 <th scope="col">Volume (24h)</th>
-                                <!-- <th scope="col">Action</th> -->
+                                <th scope="col">Action</th>
                                 <!-- This could be important -->
-                                <!--  -->
                             </tr>
                         </thead>
 
                         <tbody class="crypto-table">
                             {% for result in results %}
+                                <!-- <tr class="token"> -->
                                 <tr>
                                     <td><strong class="crypto-name">{{ result.name }}</strong></td>
                                     <td>{{ result.symbol }}</td>
-                                    <td id="crypto-price">{{ result.priceUsd }}</td>
-                                    <td id="crypto-percent">{{ result.changePercent24Hr }}</td>
-                                    <td id="crypto-mcap">{{ result.marketCapUsd }}</td>
-                                    <td id="crypto-volume">{{ result.volumeUsd24Hr }}</td>
-                                    <!-- <td id="crypto-volume"><a href="">+</a></td> -->
+                                    <td>{{ result.priceUsd }}</td>
+                                    <td>{{ result.changePercent24Hr }}</td>
+                                    <td>{{ result.marketCapUsd }}</td>
+                                    <td>{{ result.volumeUsd24Hr }}</td>
+                                    <!-- <input type="hidden" value="{{ result.name }}" class="token" name="name">
+                                    <td><a href="javascript:void(0)" id="" onclick="getToken()">+</a></td> -->
+                                    <!-- <td><a href="#" class="token" onclick="token()">+</a></td> -->
+                                    <td><a href="#" onclick="getToken()"><input class="token" type="hidden" value="{{ result.id }}">+</a></td>
+                                    
                                 </tr>
+                                <!-- <input type="text" name="name" value=""> -->
                             {% endfor %}
                         </tbody>
                     </table>
