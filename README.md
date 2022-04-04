@@ -422,6 +422,14 @@ Additions:
 - User can sign up
 - Posts to mongoDB
 
+### 6.15 Sign up page CSS and responsive on all devices
+
+Additions:
+
+- Sign up page CSS
+- Sign up page responsive on all devices
+- Changes to footer on mobile devices
+
 ## 7.0 Deployment
 
 ### 7.1 Local deployment

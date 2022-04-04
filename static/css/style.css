@@ -16,6 +16,20 @@ a:hover {
     text-decoration: none;
 }
 
+.prime-btn {
+    background-color: #141414;
+    border: #FFAC5E 1px solid;
+    border-radius: 15px;
+    color: white;
+    padding: 5px 15px;
+}
+
+.prime-btn:hover {
+    background-color: #FFAC5E;
+    color: black;
+    border: black 1.5px solid;
+}
+
 /* Universal */
 
 /* Nav-bar */
@@ -113,6 +127,26 @@ a:hover {
 
 /* Home page */
 
+/* Sign up page */
+
+.account-title {
+    text-align: center;
+}
+
+.account-input {
+    margin: 5px;
+    padding: 5px;
+    width: 100% !important;
+    background-color: #141414;
+}
+
+.account-button {
+    width: 100%;
+    margin-top: 5px;
+}
+
+/* Sign up page */
+
 /* Breakpoints */
 
 @media (max-width: 992px) {
@@ -131,6 +165,9 @@ a:hover {
     }
     .navbar-brand {
         margin-right: 0px;
+    }
+    .footer-title {
+        font-size: 1.35em;
     }
 }
 
