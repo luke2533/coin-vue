@@ -34,7 +34,7 @@
                     </li>
                     {% if session.user %}
                         <li class="nav-item">
-                            <a class="nav-link btn-link" href="#">My Portfolio</a>
+                            <a class="nav-link btn-link" href="{{ url_for('portfolio') }}">My Portfolio</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link btn-link link-bottom" href="{{ url_for('logout') }}">Log out</a>
@@ -89,7 +89,7 @@
                     <div class="col-6 col-md-5 col-xl-4">
                         <h2 class="footer-title">Navigation</h2>
                         <a href="{{ url_for('coinvue') }}" class="footer-link footer-mobile-link"><i class="fas fa-home"></i> Home</a>
-                        <a href="#" class="footer-link footer-mobile-link"><i class="fas fa-coins"></i> My Portfolio</a>
+                        <a href="{{ url_for('portfolio') }}" class="footer-link footer-mobile-link"><i class="fas fa-coins"></i> My Portfolio</a>
                         <a href="{{ url_for('login') }}" class="footer-link footer-mobile-link"><i class="fas fa-user"></i> Log in</a>
                     </div>
                 </div>

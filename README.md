@@ -458,6 +458,16 @@ Additions:
 - If user is not signed in nav shows log in and sign up
 - Flash messages added
 
+### 6.20 Portfolio page basic structure and responsive on all pages
+
+Additions:
+
+- Created portfolio.html
+- Basic structure for portfolio page
+- Portfolio page responsive on all devices
+- Styled flash messages
+- Created records.html
+
 ## 7.0 Deployment
 
 ### 7.1 Local deployment

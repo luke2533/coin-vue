@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-10 col-md-11">
+                <h2>username.capitalize() 's Portfolio</h2>
+                <h3>$total_value</h3>
+                <a href="#" class="prime-btn">Add new +</a>
+            </div>
+        </div>
+    </div>
+
+    <br>
+
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-11">
+                <div class="table-overflow">
+                    <table class="table table-striped">
+                        <thead class="table-dark">
+                            <tr>
+                                <th scope="col">Name</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">24h %</th>
+                                <th scope="col">Holdings</th>
+                                <th scope="col">Value</th>
+                                <th scope="col">Profit/Loss</th>
+                                <th scope="col">View records</th>
+                                <th scope="col">Action</th>
+                                <!-- Try on the home page too -->
+                            </tr>
+                        </thead>
+
+                        <tbody class="crypto-table">
+                            <tr>
+                                <td class="crypto-name">Bitcoin</td>
+                                <td>$35000</td>
+                                <td>3.5%</td>
+                                <td>0.5</td>
+                                <td>$17500</td>
+                                <td>$2500</td>
+                                <td><a href="#">:</a></td>
+                                <td>
+                                    <a href="#">Add +</a> |
+                                    <a href="#">Edit</a> |
+                                    <a href="#">Delete</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -30,6 +30,16 @@ a:hover {
     border: black 1.5px solid;
 }
 
+.flash {
+    background-color: #FFAC5E;
+    color: #0d1117;
+    text-align: center;
+    padding: 7.5px;
+    font-size: 2em;
+    max-width: 400px;
+    min-width: 250px;
+}
+
 /* Universal */
 
 /* Nav-bar */
@@ -168,6 +178,11 @@ a:hover {
     }
     .footer-title {
         font-size: 1.35em;
+    }
+    .flash {
+        font-size: 1.5em;
+        display: block;
+        align-content: center;
     }
 }
 

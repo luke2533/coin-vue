@@ -109,6 +109,24 @@ def logout():
     return redirect(url_for("login"))
 
 
+@app.route("/portfolio")
+def portfolio():
+
+    return render_template("portfolio.html")
+
+
+@app.route("/get_record")
+def get_records():
+    username = mongo.db.records.find_one(
+        {"username": session["user"]})["username"]
+
+    return render_template(("records.html"), username=username)
+
+
+# @app.route("/add_record")
+# <id>
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
