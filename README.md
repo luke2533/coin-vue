@@ -405,6 +405,14 @@ Additions:
 - coinvue file added
 - Home page displays top 100 cryptos
 
+### 6.13 Home page responsive and limits numbers to 4 deciaml points
+
+Additions:
+
+- script.js file
+- Home page limits numbers to 4 decimal points
+- Home page responsive on all devices
+
 ## 7.0 Deployment
 
 ### 7.1 Local deployment

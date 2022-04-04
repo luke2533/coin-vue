@@ -27,6 +27,16 @@ mongo = PyMongo(app)
 def coinvue():
     results = crypto.crypto_top_100()
 
+    for result in results:
+        cryptoPrice = float(result["priceUsd"])
+        cryptoPercent = float(result["changePercent24Hr"])
+        cryptoMcap = float(result["marketCapUsd"])
+        cryptoVolume = float(result["volumeUsd24Hr"])        
+
+        result["priceUsd"] = "$" + "{:.4f}".format(cryptoPrice)
+        result["changePercent24Hr"] = "{:.4f}%".format(cryptoPercent)
+        result["marketCapUsd"] = "$" + "{:.4f}".format(cryptoMcap)
+        result["volumeUsd24Hr"] = "$" + "{:.4f}".format(cryptoVolume)
     return render_template("index.html", results=results)
 
 

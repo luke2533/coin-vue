@@ -100,7 +100,25 @@ a:hover {
 
 /* Footer */
 
+/* Home page */
+
+.crypto-table {
+    color: #FFAC5E;
+}
+
+.crypto-name {
+    color: white;
+}
+
+/* Home page */
+
 /* Breakpoints */
+
+@media (max-width: 992px) {
+    .table-overflow {
+        overflow: auto !important;
+    }
+}
 
 @media (max-width: 426px) {
     .logo {
