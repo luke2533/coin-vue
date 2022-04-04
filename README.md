@@ -450,6 +450,14 @@ Additions:
 
 - Log out function working
 
+### 6.19 Flash messages added and alternative navs based on if user is signed in or not
+
+Additions:
+
+- If user is signed in nav shows my portfolio and log out
+- If user is not signed in nav shows log in and sign up
+- Flash messages added
+
 ## 7.0 Deployment
 
 ### 7.1 Local deployment

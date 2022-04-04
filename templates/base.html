@@ -32,18 +32,21 @@
                     <li class="nav-item">
                         <a class="nav-link btn-link" href="{{ url_for('coinvue') }}">Home</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link btn-link" href="#">My Portfolio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link btn-link link-bottom" href="{{ url_for('logout') }}">Log out</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link btn-link" href="{{ url_for('login') }}">Log in</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link btn-link link-bottom" href="{{ url_for('signup') }}">Sign up</a>
-                    </li>
+                    {% if session.user %}
+                        <li class="nav-item">
+                            <a class="nav-link btn-link" href="#">My Portfolio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link btn-link link-bottom" href="{{ url_for('logout') }}">Log out</a>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link btn-link" href="{{ url_for('login') }}">Log in</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link btn-link link-bottom" href="{{ url_for('signup') }}">Sign up</a>
+                        </li>
+                    {% endif %}
                 </ul>
             </div>
         </nav>
@@ -53,7 +56,18 @@
     </header>
 
     <section>
-        <!-- Messages go here -->
+        <!-- Messages -->
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="row justify-content-center flashes">
+                        <div class="col-3">
+                            <h4 class="flash">{{ message }}</h4>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
     </section>
 
     {% block content %}
