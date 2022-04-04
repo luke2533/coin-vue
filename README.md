@@ -444,6 +444,12 @@ Additions:
 
 - Log in function working
 
+### 6.18 Log out function working
+
+Additions:
+
+- Log out function working
+
 ## 7.0 Deployment
 
 ### 7.1 Local deployment
