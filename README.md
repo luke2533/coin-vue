@@ -430,11 +430,37 @@ Additions:
 - Sign up page responsive on all devices
 - Changes to footer on mobile devices
 
+### 6.16 README 7.0 Deployment added and created login page basic structure
+
+Additions
+
+- README 7.0 Deployment added
+- Created login.html
+- Basic structure for log in page 
+
 ## 7.0 Deployment
 
 ### 7.1 Local deployment
 
+This project was developed on GitPod.
+
+To devlop this project these steps where taken:
+
+1. Create a new repository on GitHub
+2. Click "GitPod" button on GitHub to create the work enviroment
+3. Create and work on files on GitPod
+4. Create .gitignore file to add files that should't be commited to GitHub
+5. Using GitPods terminal add, commit and push files to GitHub
+
 ### 7.2 Heroku deployment
+
+1. From Heroku's website sign in and click "New", "Create new app"
+2. Enter a app name "coin-vue" and region then click "Create app"
+3. Go to the settings then scroll to "Reaveal Config Vars" and enter the appropriate details from env.py file: "IP", "PORT", "SECRET_KEY", "MONGO_DBNAME", "MONGO_URI"
+4. To deploy GitHub to Heroku first create a Procfile using this command in the terminal: echo web: python app.py > Procfile
+5. Then create a requirments file that contains all of the relevant packages using the command: pip3 freeze --local > requirements.txt
+6. Go to the Deploy tab to search and connect the GitHub repository to Heroku
+7. Enable Automatic Deploys for automatic updates when code is commited to GitHub, select the branch and deploy to Heroku
 
 ## 8.0 Credits
 

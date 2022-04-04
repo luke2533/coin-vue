@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-10 col-md-5 col-lg-4 col-xl-3">
+                <form action="" method="">
+                    <h1 class="account-title">Log in</h1>
+                    <input type="text" placeholder="Username" class="account-input" id="username" name="username" pattern="^[a-zA-Z0-9]{5,15}$" minlength="4" maxlength="15" required>
+                    <br>
+                    <input type="password" placeholder="Password" class="account-input" id="password" name="password" minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" required>
+                    <br>
+                    <button type="submit" class="prime-btn account-button">Click here to log in</button>
+                    <!-- Already have an account -->
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
