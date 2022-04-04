@@ -31,7 +31,7 @@ def coinvue():
         cryptoPrice = float(result["priceUsd"])
         cryptoPercent = float(result["changePercent24Hr"])
         cryptoMcap = float(result["marketCapUsd"])
-        cryptoVolume = float(result["volumeUsd24Hr"])        
+        cryptoVolume = float(result["volumeUsd24Hr"])
 
         result["priceUsd"] = "$" + "{:.4f}".format(cryptoPrice)
         result["changePercent24Hr"] = "{:.4f}%".format(cryptoPercent)
@@ -119,12 +119,21 @@ def portfolio():
 def get_records():
     username = mongo.db.records.find_one(
         {"username": session["user"]})["username"]
+    
+    # token = 
+    # token_id = mongo.db.records.find({"token_id": token})
 
-    return render_template(("records.html"), username=username)
+    if session["user"] == username:
+        user_records = mongo.db.records.find({"username": session["user"]}
+                                             ).sort("date", -1)
+    # Will need to add the id to this bit i think or if statement
+
+    return render_template(("records.html"), username=username,
+                           user_records=user_records)
 
 
 # @app.route("/add_record")
-# <id>
+# <token_id> // Like Bitcoin
 
 
 if __name__ == "__main__":

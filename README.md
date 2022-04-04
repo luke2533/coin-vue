@@ -468,6 +468,13 @@ Additions:
 - Styled flash messages
 - Created records.html
 
+### 6.21 Record bag layout and displays user specific records
+
+Additions:
+
+- Record page basic layout
+- Record page displays users records
+
 ## 7.0 Deployment
 
 ### 7.1 Local deployment

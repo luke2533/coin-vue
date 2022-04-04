@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-8">
+                <h1 class="text-center">Bitcoin</h1>
+                <!-- Token name goes there -->
+                <table>
+                    <div class="table-overflow">
+                        <table class="table table-striped">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Type</th>
+                                    <th scope="col">Quantity</th>
+                                    <th scope="col">Cost per coin</th>
+                                    <th scope="col">Date</th>
+                                    <th scope="col">Notes</th>
+                                    <th scope="col">Total</th>
+                                    <th scope="col">Actions</th>
+                                </tr>
+                            </thead>
+    
+                            <tbody class="crypto-table">
+                                {% for record in user_records %}
+                                    <tr>
+                                        <td class="crypto-name">{{ record.token_id }}</td>
+                                        <td>{{ record.type }}</td>
+                                        <td>{{ record.quantity }}</td>
+                                        <td>${{ record.per_coin }}</td>
+                                        <td>{{ record.date }}</td>
+                                        <td class="notes-overflow">{{ record.notes }}</td>
+                                        <td>${{ record.total }}</td>
+                                        <td>
+                                            <a href="#">Edit</a> |
+                                            <a href="#">Delete</a>
+                                            <!-- Delete record -->
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

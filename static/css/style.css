@@ -137,7 +137,7 @@ a:hover {
 
 /* Home page */
 
-/* Sign up page */
+/* Account pages */
 
 .account-title {
     text-align: center;
@@ -155,7 +155,15 @@ a:hover {
     margin-top: 5px;
 }
 
-/* Sign up page */
+/* Account pages */
+
+/* Records page */
+
+.notes-overflow {
+    overflow: auto;
+}
+
+/* Records page */
 
 /* Breakpoints */
 
