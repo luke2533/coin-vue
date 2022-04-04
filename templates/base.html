@@ -18,11 +18,11 @@
     <header>
         <!-- Nav bar -->
 
-        <nav class="navbar navbar-expand-lg nav-color">
-            <a href="#">
+        <nav class="navbar navbar-expand-lg nav-bar">
+            <a href="{{ url_for('coinvue') }}">
                 <img src="https://thumbs.dreamstime.com/b/blockchain-technology-icon-vector-block-chain-symbol-blockchain-technology-modern-icon-vector-block-chain-symbol-logo-element-106099068.jpg"
                 alt="CoinVue logo" class="logo"></a>
-            <a class="navbar-brand" href="#"><h1 class="nav-title">CoinVue</h1></a>
+            <a class="navbar-brand" href="{{ url_for('coinvue') }}"><h1 class="nav-title">CoinVue</h1></a>
             <button class="mobile-menu navbar-toggler" type="button" data-toggle="collapse" data-target="#nav-menu" aria-controls="nav-menu" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="fas fa-bars"></i>
             </button>
@@ -30,7 +30,7 @@
             <div class="collapse navbar-collapse" id="nav-menu">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link btn-link" href="#">Home</a>
+                        <a class="nav-link btn-link" href="{{ url_for('coinvue') }}">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link btn-link" href="#">My Portfolio</a>
@@ -42,7 +42,7 @@
                         <a class="nav-link btn-link" href="#">Log in</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link btn-link link-bottom" href="#">Sign up</a>
+                        <a class="nav-link btn-link link-bottom" href="{{ url_for('signup') }}">Sign up</a>
                     </li>
                 </ul>
             </div>

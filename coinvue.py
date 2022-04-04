@@ -16,9 +16,7 @@ class Crypto:
         response = requests.request("GET", url, headers=headers, data=payload)
 
         json_data = json.loads(response.text.encode("utf8"))
-        # print(response.text)
-        # print(json_data)
 
         coin_data = json_data["data"]
-        print(coin_data)
+        # print(coin_data)
         return coin_data

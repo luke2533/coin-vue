@@ -413,6 +413,15 @@ Additions:
 - Home page limits numbers to 4 decimal points
 - Home page responsive on all devices
 
+### 6.14 Sign up page basic structure and POST's to mongoDB
+
+Additions:
+
+- Created Sign up page
+- Basic sign up page structure
+- User can sign up
+- Posts to mongoDB
+
 ## 7.0 Deployment
 
 ### 7.1 Local deployment
