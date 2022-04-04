@@ -398,6 +398,13 @@ Additions:
 
 - Footer added
 
+### 6.12 Home page displays top 100 cryptos
+
+Additions:
+
+- coinvue file added
+- Home page displays top 100 cryptos
+
 ## 7.0 Deployment
 
 ### 7.1 Local deployment

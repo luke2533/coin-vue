@@ -1,3 +1,47 @@
 {% extends "base.html" %}
 {% block content %}
+
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-9">
+                <h1>CoinVue</h1>
+                <h3>Displaying the latest top 50 crypto data</h3>
+                <div class="col-8" style="padding: 0px;">
+                    <p>CoinVue is a cryptocurrency tracking platform with the latest data on the top 50 coins price movements. 
+                        As well as a tool for tracking porfolios performance with a chart showing the historical value, 
+                        invested cost and diffrence of the users assets. Buy, sell and staking rewards can be recorded to
+                        the portfolio updating the chart and its total value.
+                    </p>
+                </div>
+
+                <table class="table table-striped">
+                    <thead class="table-dark">
+                        <tr>
+                            <th scope="col"><strong>Crypto Name</strong></th>
+                            <th scope="col">Symbol</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">24h%</th>
+                            <th scope="col">Market Cap</th>
+                            <th scope="col">Volume (24h)</th>
+                        </tr>
+                    </thead>
+
+                    <tbody class="">
+                        {% for result in results %}
+                            <tr>
+                                <td><strong class="">{{ result.name }}</strong></td>
+                                <td>{{ result.symbol }}</td>
+                                <td>{{ result.priceUsd }}</td>
+                                <td>{{ result.changePercent24Hr }}</td>
+                                <td>{{ result.marketCapUsd }}</td>
+                                <td>{{ result.volumeUsd24Hr }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+
 {% endblock %}
