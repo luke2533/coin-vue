@@ -438,6 +438,12 @@ Additions
 - Created login.html
 - Basic structure for log in page 
 
+### 6.17 Log in function working
+
+Additions:
+
+- Log in function working
+
 ## 7.0 Deployment
 
 ### 7.1 Local deployment

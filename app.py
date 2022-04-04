@@ -45,7 +45,7 @@ def signup():
     if request.method == "POST":
         existing_user = mongo.db.users.find_one(
             {"username": request.form.get("username").lower()})
-        
+
         if existing_user:
             flash("Username already exisits")
             return redirect(url_for("signup"))
@@ -58,7 +58,7 @@ def signup():
         if password != check_password:
             flash("Please make sure the passwords match")
             return redirect(url_for("signup"))
-        
+
         if email != check_email:
             flash("Please make sure the emails match")
             return redirect(url_for("signup"))
@@ -75,6 +75,31 @@ def signup():
         return redirect(url_for("coinvue"))
         # Change to portfolio
     return render_template("signup.html")
+
+
+@app.route("/login", methods=["GET", "POST"])
+def login():
+    if request.method == "POST":
+        existing_user = mongo.db.users.find_one(
+            {"username": request.form.get("username")})
+
+        if existing_user:
+            if check_password_hash(existing_user["password"],
+                                   request.form.get("password")):
+                session["user"] = request.form.get("username")
+                flash("Welcome, {}".format(request.form.get("username")))
+                return redirect(url_for("coinvue"))
+                # Change to portfolio
+            else:
+                # Wrong password
+                flash("Inccorect username and/or password")
+                return redirect(url_for("login"))
+        else:
+            # Username doesn't exist
+            flash("Inccorect username and/or password")
+            return redirect(url_for("login"))
+
+    return render_template("login.html")
 
 
 if __name__ == "__main__":
