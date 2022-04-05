@@ -482,6 +482,13 @@ Additions:
 - Record page responsive on all devices
 - Each row on home page has unique ID
 
+### 6.23 Basic page structure for add_record.html
+
+Additions:
+
+- Created add_record page
+- Basic page structure for add_record.html
+
 ## 7.0 Deployment
 
 ### 7.1 Local deployment

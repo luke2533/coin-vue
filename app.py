@@ -132,7 +132,9 @@ def get_records():
                            user_records=user_records)
 
 
-# @app.route("/add_record")
+@app.route("/add_record")
+def add_record():
+    return render_template("add_record.html")
 # <token_id> // Like Bitcoin
 
 
