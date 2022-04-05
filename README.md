@@ -498,6 +498,13 @@ Additions:
 
 Issue: add_record.html tabs nots working
 
+### 6.25 Record page styled and responsive on all devices
+
+Additions:
+
+- Add record page responsive on all devices
+- Styled add_record.html
+
 ## 7.0 Deployment
 
 ### 7.1 Local deployment

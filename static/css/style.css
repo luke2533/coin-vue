@@ -16,12 +16,16 @@ a:hover {
     text-decoration: none;
 }
 
+button {
+    line-height: normal !important;
+}
+
 .prime-btn {
     background-color: #141414;
     border: #FFAC5E 1px solid;
     border-radius: 15px;
     color: white;
-    padding: 5px 15px;
+    padding: 7.5px 15px;
 }
 
 .prime-btn:hover {
@@ -164,6 +168,30 @@ a:hover {
 }
 
 /* Records page */
+
+/* Add record page */
+
+.record-section {
+    background-color: #161b22;
+    padding: 30px;
+    border: black 1px solid;
+}
+
+.record {
+    margin: 5px;
+    padding: 5px;
+    width: 100% !important;
+    background-color: #141414;
+    color: white;
+}
+
+.record:hover {
+    background-color: #FFAC5E;
+    color: black;
+    border: black 1.5px solid;
+}
+
+/* Add record page */
 
 /* Breakpoints */
 

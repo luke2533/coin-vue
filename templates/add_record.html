@@ -3,8 +3,8 @@
 
     <div class="container-fluid">
         <div class="row justify-content-center">
-            <div class="col-6">
-                <h2 class="text-center">Add Record</h2>
+            <div class="col-6 mt-2">
+                <h1 class="text-center">Add Record</h1>
             </div>
         </div>
 
@@ -30,49 +30,44 @@
             <!-- Buy record -->
 
             <div class="tab-pane fade show active" id="buy" role="tabpanel" aria-labelledby="buy-tab">
-
                 <form action="{{ url_for('add_record') }}" method="POST">
-
                     <div class="row justify-content-center">
-                        <div class="text-box">
-                            <p>To make a record of a buy order select the correct coin / token and 
-                                enter the quantity, price per token and date of the transaction
-                            </p>
-                            <!-- This might need to be updated -->
+                        <div class="col-11 col-md-7 col-xl-4 record-section">
+                            <div class="row justify-content-center">
+                                <div>
+                                    <p class="text-center">To make a record of a buy order select the correct coin / token and 
+                                        enter the quantity, price per token and date of the transaction
+                                    </p>
+                                    <!-- This might need to be updated -->
+                                </div>
+                            </div>
+        
+                            <div class="row justify-content-center">
+                                <div class="form-group">
+                                    <select class="form-control record" name="token_id" id="token_id">
+                                        <option disabled selected>Select Coin / Token</option>
+                                        <option>Polkadot</option>
+                                        <!-- Subject to change possibly -->
+                                    </select>
+                                </div>
+                            </div>
+
+                            <input type="text" placeholder="Quantity" class="record" id="quantity" name="quantity" required>
+
+                            <input type="text" placeholder="Price Per Coin" class="record" id="per_coin" name="per_coin" required>
+
+                            <input type="date" class="record" id="date" name="date" placeholder="Date" required>
+
+                            <input type="text" class="record" id="notes" name="notes" placeholder="Notes">
+            
+                            <input type="hidden" id="total" name="total">
+                            <!-- <input type="text" class="record" placeholder="0.00" id="total" name="total" readonly> -->
+                            <!-- If you have time user javascript to display the total cost here -->
+                            <a href="{{ url_for('portfolio') }}" class="prime-btn mt-2 mr-2">Go back</a>
+                            <button type="submit" name="record_type" value="Buy" class="prime-btn mt-2">Add record</button>
+        
                         </div>
                     </div>
-
-                    <div class="row justify-content-center">
-                        <div class="form-group">
-                            <select class="form-control record" name="token_id" id="token_id">
-                                <option disabled selected>Select Coin / Token</option>
-                                <option>Polkadot</option>
-                                <!-- Subject to change possibly -->
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="row justify-content">
-                        <input type="text" placeholder="Quantity" class="record" id="quantity" name="quantity" required>
-                    </div>
-
-                    <div class="row justify-content">
-                        <input type="text" placeholder="Price Per Coin" class="record" id="per_coin" name="per_coin" required>
-                    </div>
-
-                    <div class="row justify-content">
-                        <input type="date" class="record" id="date" name="date" placeholder="Date" required>
-                    </div>
-
-                    <div class="row justify-content">
-                        <input type="text" class="record" id="notes" name="notes" placeholder="Notes">
-                    </div>
-
-                    <input type="hidden" id="total" name="total">
-                    <!-- <input type="text" class="record" placeholder="0.00" id="total" name="total" readonly> -->
-                    <!-- If you have time user javascript to display the total cost here -->
-                    <a href="">Go back</a>
-                    <button type="submit" name="record_type" value="Buy">Add record</button>
 
                 </form>
 
