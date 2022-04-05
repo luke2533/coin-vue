@@ -505,6 +505,14 @@ Additions:
 - Add record page responsive on all devices
 - Styled add_record.html
 
+### 6.26 Edit record page styled and responsive on all devices
+
+Additions:
+
+- Created edit_record page
+- Stlyed edit_record.html
+- Edit record page responsive on all devices
+
 ## 7.0 Deployment
 
 ### 7.1 Local deployment

@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-11 col-md-7 col-xl-4 record-section">
+                <h1 class="text-center">Edit Records</h1>
+                <p class="text-center">If you have made a mistake recording your transaction change to correct details here</p>
+                
+                <form action="">
+                    <input type="text" placeholder="Quantity" class="record" id="edit_quantity" name="edit_quantity">
+                    <input type="text" placeholder="Price Per Coin" class="record" id="edit_per_coin" name="edit_per_coin">
+                    <input type="date" placeholder="Date" class="record" id="edit_date" name="edit_date">
+                    <input type="text" placeholder="Notes" class="record" id="edit_notes" name="edit_notes">
+                    <input type="hidden" id="total" name="total">
+
+                    <a href="{{ url_for('get_records') }}" class="prime-btn mt-2 mr-2">Go back</a>
+                    <button class="prime-btn mt-2" type="submit" name="type" value="Edit">Edit record</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

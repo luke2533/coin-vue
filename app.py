@@ -166,6 +166,11 @@ def add_record():
     return render_template("add_record.html")
 
 
+@app.route("/edit_record")
+def edit_record():
+    return render_template("edit_record.html")
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
