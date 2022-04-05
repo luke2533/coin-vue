@@ -11,15 +11,15 @@
         <div class="row justify-content-center">
             <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                 <li class="nav-item">
-                    <a class="nav-link record-tab active" id="buy-tab" data-toggle="pill"
+                    <a class="nav-link record-tab active" id="buy-tab" data-toggle="tab"
                         href="#buy" role="tab" aria-controls="buy-tab" aria-selected="true">Buy</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link record-tab active" id="sell-tab" data-toggle="pill"
+                    <a class="nav-link record-tab active" id="sell-tab" data-toggle="tab"
                         href="#sell" role="tab" aria-controls="sell-tab" aria-selected="false">Sell</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link record-tab active" id="staking-tab" data-toggle="pill"
+                    <a class="nav-link record-tab active" id="staking-tab" data-toggle="tab"
                         href="#staking" role="tab" aria-controls="staking-tab" aria-selected="false">Staking</a>
                 </li>
             </ul>
@@ -31,7 +31,7 @@
 
             <div class="tab-pane fade show active" id="buy" role="tabpanel" aria-labelledby="buy-tab">
 
-                <!-- <form action="" action=""> -->
+                <form action="{{ url_for('add_record') }}" method="POST">
 
                     <div class="row justify-content-center">
                         <div class="text-box">
@@ -46,6 +46,7 @@
                         <div class="form-group">
                             <select class="form-control record" name="token_id" id="token_id">
                                 <option disabled selected>Select Coin / Token</option>
+                                <option>Polkadot</option>
                                 <!-- Subject to change possibly -->
                             </select>
                         </div>
@@ -71,16 +72,16 @@
                     <!-- <input type="text" class="record" placeholder="0.00" id="total" name="total" readonly> -->
                     <!-- If you have time user javascript to display the total cost here -->
                     <a href="">Go back</a>
-                    <button type="submit" name="type" value="Buy">Add record</button>
+                    <button type="submit" name="record_type" value="Buy">Add record</button>
 
-                <!-- </form> -->
+                </form>
 
             <!-- Buy record -->
 
             <!-- Sell record -->
 
                     <div class="tab-pane fade" id="sell" role="tabpanel" aria-labelledby="sell-tab">
-                        <!-- <form action="" method=""> -->
+                        <form action="{{ url_for('add_record') }}" method="POST">
                             <div class="row justify-content-center">
                                 <div class="text-box">
                                     <p>To make a record of your Sell orders select the coin / token and 
@@ -117,8 +118,8 @@
                             <!-- <input type="text" class="record" placeholder="0.00" id="total" name="total" readonly> -->
                             <!-- If you have time user javascript to display the total cost here -->
                             <a href="">Go back</a>
-                            <button type="submit" name="type" value="Sell">Add record</button>
-                        <!-- </form> -->
+                            <button type="submit" name="record_type" value="Sell">Add record</button>
+                        </form>
                     </div>
 
             <!-- Sell record -->
@@ -126,7 +127,7 @@
             <!-- Staking record -->
 
                 <div class="tab-pane fade" id="staking" role="tabpanel" aria-labelledby="staking-tab">
-                    <!-- <form action="" method=""> -->
+                    <form action="{{ url_for('add_record') }}" method="POST">
                         <div class="row justify-content-center">
                             <div class="text-box">
                                 <p>
@@ -161,13 +162,14 @@
                         <input type="hidden" id="total" name="total" value="0">
 
                         <a href="">Go back</a>
-                        <button type="submit" name="type" value="Staking">Add record</button>
-                    <!-- </form> -->
+                        <button type="submit" name="record_type" value="Staking">Add record</button>
+                    </form>
                 </div>
             <!-- Staking record -->
 
             </div>
         </div>
+        <!-- https://getbootstrap.com/docs/4.5/components/navs/#tab TabPills -->
 
     </div>
 

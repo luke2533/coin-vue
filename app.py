@@ -132,10 +132,38 @@ def get_records():
                            user_records=user_records)
 
 
-@app.route("/add_record")
-def add_record():
-    return render_template("add_record.html")
+@app.route("/add_record", methods=["GET", "POST"])
 # <token_id> // Like Bitcoin
+# Remove select maybe from add record page
+def add_record():
+
+    if request.method == "POST":
+        username = mongo.db.users.find_one(
+            {"username": session["user"]})["username"]
+
+        record_type = request.form.get("record_type")
+        quantity = request.form.get("quantity")
+        per_coin = request.form.get("per_coin")
+        total = float(quantity) * float(per_coin)
+        date = request.form.get("date")
+        notes = request.form.get("notes")
+
+        token_id = request.form.get("token_id")
+        # Subject to change
+        
+        records = {
+            "username": session["user"],
+            "record_type": record_type,
+            "token_id": token_id,
+            "quantity": float(quantity),
+            "per_coin": float(per_coin),
+            "date": date,
+            "notes": notes,
+            "total": float(total)
+        }
+        mongo.db.records.insert_one(records)
+
+    return render_template("add_record.html")
 
 
 if __name__ == "__main__":

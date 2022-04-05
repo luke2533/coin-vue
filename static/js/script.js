@@ -12,3 +12,9 @@ function getToken() {
 }
 
 // Home page
+
+$(function () {
+    $('#myTab li:last-child a').tab('show')
+})
+
+// Add record page

@@ -489,6 +489,15 @@ Additions:
 - Created add_record page
 - Basic page structure for add_record.html
 
+### 6.24 Buy record successfully POST's to mongoDB
+
+Additions:
+
+- Add record funtion
+- Buy record successfully POST's to mongoDB
+
+Issue: add_record.html tabs nots working
+
 ## 7.0 Deployment
 
 ### 7.1 Local deployment
