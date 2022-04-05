@@ -513,6 +513,12 @@ Additions:
 - Stlyed edit_record.html
 - Edit record page responsive on all devices
 
+### 6.27 Edit record successfully POST's to mongoDB
+
+Additions:
+
+- Edit record successfully POST's to mongoDB
+
 ## 7.0 Deployment
 
 ### 7.1 Local deployment

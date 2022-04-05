@@ -32,7 +32,7 @@
                                     <td class="notes-overflow">{{ record.notes }}</td>
                                     <td>${{ record.total }}</td>
                                     <td>
-                                        <a href="{{ url_for('edit_record') }}">Edit</a> |
+                                        <a href="{{ url_for('edit_record', record_id=record._id) }}">Edit</a> |
                                         <!-- Need some sort of ID for record -->
                                         <a href="#">Delete</a>
                                         <!-- Delete record -->

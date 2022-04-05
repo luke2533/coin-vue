@@ -4,11 +4,11 @@
     <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="col-10 col-md-11">
-                <h2>username.capitalize() 's Portfolio</h2>
+                <h2>{{ username }}.capitalize() 's Portfolio</h2>
                 <h3>$total_value</h3>
                 <a href="{{ url_for('add_record') }}" class="prime-btn">Add new +</a>
                 <!-- DELETE LATER -->
-                <a href="{{ url_for('get_records') }}">Records</a>
+                <a href="{{ url_for('get_records', username=username) }}">Records</a>
                 <!-- DELETE LATER -->
             </div>
         </div>
@@ -43,7 +43,7 @@
                                 <td>0.5</td>
                                 <td>$17500</td>
                                 <td>$2500</td>
-                                <td><a href="{{ url_for('get_records') }}">:</a></td>
+                                <td><a href="{{ url_for('get_records', username=username) }}">:</a></td>
                                 <td>
                                     <a href="#">Add +</a> |
                                     <a href="#">Delete</a>

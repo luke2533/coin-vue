@@ -1,4 +1,5 @@
 import os
+import uuid
 from flask import (
     Flask, flash, render_template,
     redirect, request, session, url_for)
@@ -26,6 +27,10 @@ mongo = PyMongo(app)
 @app.route("/coinvue")
 def coinvue():
     results = crypto.crypto_top_100()
+
+    # record_id = uuid.uuid4().hex
+    # print(record_id)
+    # Might use for home page
 
     for result in results:
         cryptoPrice = float(result["priceUsd"])
@@ -111,17 +116,16 @@ def logout():
 
 @app.route("/portfolio")
 def portfolio():
+    username = mongo.db.records.find_one(
+            {"username": session["user"]})["username"]
 
-    return render_template("portfolio.html")
+    return render_template(("portfolio.html"), username=username)
 
 
-@app.route("/get_record")
-def get_records():
+@app.route("/get_record/<username>")
+def get_records(username):
     username = mongo.db.records.find_one(
         {"username": session["user"]})["username"]
-    
-    # token = 
-    # token_id = mongo.db.records.find({"token_id": token})
 
     if session["user"] == username:
         user_records = mongo.db.records.find({"username": session["user"]}
@@ -150,7 +154,7 @@ def add_record():
 
         token_id = request.form.get("token_id")
         # Subject to change
-        
+
         records = {
             "username": session["user"],
             "record_type": record_type,
@@ -162,13 +166,44 @@ def add_record():
             "total": float(total)
         }
         mongo.db.records.insert_one(records)
+        flash("Record successfully added")
+        return redirect(url_for("get_records", username=username))
 
     return render_template("add_record.html")
 
 
-@app.route("/edit_record")
-def edit_record():
-    return render_template("edit_record.html")
+@app.route("/edit_record/<record_id>", methods=["GET", "POST"])
+def edit_record(record_id):
+    record = mongo.db.records.find_one({"_id": ObjectId(record_id)})
+    username = mongo.db.users.find_one(
+            {"username": session["user"]})["username"]
+
+    if request.method == "POST":
+
+        edit_quantity = request.form.get("edit_quantity")
+        edit_per_coin = request.form.get("edit_per_coin")
+        edit_date = request.form.get("edit_date")
+        edit_notes = request.form.get("edit_notes")
+        edit_total = float(edit_quantity) * float(edit_per_coin)
+
+        update_record = {
+            "quantity": float(edit_quantity),
+            "per_coin": float(edit_per_coin),
+            "date": edit_date,
+            "notes": edit_notes,
+            "total": float(edit_total)
+        }
+        mongo.db.records.update_one({"_id": ObjectId(record_id)},
+                                    {"$set": update_record})
+        flash("Record successfully updated")
+        return redirect(url_for("get_records", username=username))
+
+    return render_template("edit_record.html", record=record)
+
+
+# @app.route("/delete_record/<record_id>", methods=["GET", "POST"])
+# def delete_record():
+#     delete = mongo.db.record
 
 
 if __name__ == "__main__":
