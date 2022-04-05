@@ -32,7 +32,7 @@
                         </thead>
 
                         <tbody class="crypto-table">
-                            {% for result in results %}
+                                {% for result in results %}
                                 <!-- <tr class="token"> -->
                                 <tr>
                                     <td><strong class="crypto-name">{{ result.name }}</strong></td>
@@ -44,8 +44,11 @@
                                     <!-- <input type="hidden" value="{{ result.name }}" class="token" name="name">
                                     <td><a href="javascript:void(0)" id="" onclick="getToken()">+</a></td> -->
                                     <!-- <td><a href="#" class="token" onclick="token()">+</a></td> -->
-                                    <td><a href="#" onclick="getToken()"><input class="token" type="hidden" value="{{ result.id }}">+</a></td>
+                                    <!-- <td><a href="#" onclick="getToken()"><input class="token" type="hidden" value="{{ result.id }}">+</a></td> -->
+                                    
+                                    <td><a href="{{ url_for('add_record') }}"><input class="token" type="text" value="{{ result.id }}">+</a></td>
                                     <td>{{ result.id }}</td>
+                                    <td>{{ loop.index }}</td>
                                 </tr>
                                 <!-- <input type="text" name="name" value=""> -->
                             {% endfor %}

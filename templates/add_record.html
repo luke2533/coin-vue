@@ -42,15 +42,19 @@
                                 </div>
                             </div>
         
-                            <div class="row justify-content-center">
+                            <!-- <div class="row justify-content-center">
                                 <div class="form-group">
                                     <select class="form-control record" name="token_id" id="token_id">
                                         <option disabled selected>Select Coin / Token</option>
-                                        <option>Polkadot</option>
+                                    {% for result in results %}
+                                        <option>{{ result.name }}</option>
+                                    {% endfor %} -->
                                         <!-- Subject to change possibly -->
-                                    </select>
+                                    <!-- </select>
                                 </div>
-                            </div>
+                            </div> -->
+
+                            <h3 class="text-center">Bitcoin</h3>
 
                             <input type="text" placeholder="Quantity" class="record" id="quantity" name="quantity" required>
 

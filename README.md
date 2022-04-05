@@ -519,6 +519,12 @@ Additions:
 
 - Edit record successfully POST's to mongoDB
 
+### 6.28 Delete recored successfully removes records from mongoDB
+
+Additions:
+
+- Delete recored successfully removes records from mongoDB
+
 ## 7.0 Deployment
 
 ### 7.1 Local deployment

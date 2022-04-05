@@ -6,11 +6,6 @@ function tokenId() {
 }
 window.onload = tokenId();
 
-function getToken() {
-    
-    console.log();
-}
-
 // Home page
 
 $(function () {

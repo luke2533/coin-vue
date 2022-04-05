@@ -28,20 +28,24 @@ mongo = PyMongo(app)
 def coinvue():
     results = crypto.crypto_top_100()
 
-    # record_id = uuid.uuid4().hex
-    # print(record_id)
-    # Might use for home page
-
     for result in results:
+
         cryptoPrice = float(result["priceUsd"])
         cryptoPercent = float(result["changePercent24Hr"])
         cryptoMcap = float(result["marketCapUsd"])
         cryptoVolume = float(result["volumeUsd24Hr"])
 
+        # token_id = result["id"]
+        # token_id = [result["id"]]
+
+        # for token in token_id:
+        #     print(token)
+
         result["priceUsd"] = "$" + "{:.4f}".format(cryptoPrice)
         result["changePercent24Hr"] = "{:.4f}%".format(cryptoPercent)
         result["marketCapUsd"] = "$" + "{:.4f}".format(cryptoMcap)
         result["volumeUsd24Hr"] = "$" + "{:.4f}".format(cryptoVolume)
+
     return render_template("index.html", results=results)
 
 
@@ -116,7 +120,7 @@ def logout():
 
 @app.route("/portfolio")
 def portfolio():
-    username = mongo.db.records.find_one(
+    username = mongo.db.users.find_one(
             {"username": session["user"]})["username"]
 
     return render_template(("portfolio.html"), username=username)
@@ -124,7 +128,7 @@ def portfolio():
 
 @app.route("/get_record/<username>")
 def get_records(username):
-    username = mongo.db.records.find_one(
+    username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
 
     if session["user"] == username:
@@ -136,14 +140,16 @@ def get_records(username):
                            user_records=user_records)
 
 
+# @app.route("/add_record/<token_id>", methods=["GET", "POST"])
 @app.route("/add_record", methods=["GET", "POST"])
 # <token_id> // Like Bitcoin
 # Remove select maybe from add record page
 def add_record():
+    username = mongo.db.users.find_one(
+            {"username": session["user"]})["username"]
+    results = crypto.crypto_top_100()
 
     if request.method == "POST":
-        username = mongo.db.users.find_one(
-            {"username": session["user"]})["username"]
 
         record_type = request.form.get("record_type")
         quantity = request.form.get("quantity")
@@ -167,7 +173,8 @@ def add_record():
         }
         mongo.db.records.insert_one(records)
         flash("Record successfully added")
-        return redirect(url_for("get_records", username=username))
+        return redirect(url_for("get_records",
+                        username=username, results=results))
 
     return render_template("add_record.html")
 
@@ -201,9 +208,14 @@ def edit_record(record_id):
     return render_template("edit_record.html", record=record)
 
 
-# @app.route("/delete_record/<record_id>", methods=["GET", "POST"])
-# def delete_record():
-#     delete = mongo.db.record
+@app.route("/delete_record/<record_id>", methods=["GET", "POST"])
+def delete_record(record_id):
+    delete = mongo.db.records.delete_one({"_id": ObjectId(record_id)})
+    username = mongo.db.users.find_one(
+            {"username": session["user"]})["username"]
+
+    flash("Record successfully removed")
+    return redirect(url_for("get_records", delete=delete, username=username))
 
 
 if __name__ == "__main__":

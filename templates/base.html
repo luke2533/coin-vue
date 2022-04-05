@@ -33,9 +33,15 @@
                         <a class="nav-link btn-link" href="{{ url_for('coinvue') }}">Home</a>
                     </li>
                     {% if session.user %}
-                        <li class="nav-item">
-                            <a class="nav-link btn-link" href="{{ url_for('portfolio') }}">My Portfolio</a>
-                        </li>
+                        {% if username is not none %}
+                            <li class="nav-item">
+                                <a class="nav-link btn-link" href="{{ url_for('portfolio') }}">My Portfolio</a>
+                            </li>
+                        {% else %}
+                            <li class="nav-item">
+                                <a class="nav-link btn-link" href="{{ url_for('add_record') }}">Add record</a>
+                            </li>
+                        {% endif %}
                         <li class="nav-item">
                             <a class="nav-link btn-link link-bottom" href="{{ url_for('logout') }}">Log out</a>
                         </li>
