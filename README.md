@@ -496,7 +496,7 @@ Additions:
 - Add record funtion
 - Buy record successfully POST's to mongoDB
 
-Issue: add_record.html tabs nots working
+Issue #1: add_record.html tabs not working
 
 ### 6.25 Record page styled and responsive on all devices
 
@@ -542,6 +542,16 @@ Additions:
 Additions:
 
 - Successfully adds first record of new token to pre-exisiting portfolio
+
+### 6.32 Buy, Sell and Staking records totaling new and previous with same token_id
+
+Additions:
+
+- Buy records totaling new and previous with same token_id
+- Sell records totaling new and previous with same token_id
+- Staking records totaling new and previous with same token_id
+
+Issue #2: Portfolio creates new object for every record rather then adding previous record values to portfolio values 
 
 ## 7.0 Deployment
 
