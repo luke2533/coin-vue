@@ -575,6 +575,14 @@ Issue #1 RESOLVED: add_record.html tabs not working
 
 Issue #3: Sell orders do not alter portfolio data instead creating an new object within the array
 
+### 6.35 Sell record data subracts portfolio values and Issue #3 RESOLVED
+
+Additions:
+
+- Sell record data subracts portfolio values
+
+Issue #3 RESOLVED: Sell orders do not alter portfolio data instead creating an new object within the array
+
 ## 7.0 Deployment
 
 ### 7.1 Local deployment

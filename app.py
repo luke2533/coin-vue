@@ -158,7 +158,8 @@ def get_records(username):
 def add_record():
     username = mongo.db.users.find_one(
             {"username": session["user"]})["username"]
-    results = crypto.crypto_top_50()
+    # results = crypto.crypto_top_50()
+    # Add results at the bottom
 
     if request.method == "POST":
 
@@ -221,7 +222,7 @@ def add_record():
                 "username": session["user"],
                 "id": [{
                     "token_id": token_id,
-                    "holdings": quantity,
+                    "holdings": float(quantity),
                     "value": value,
                     "grand_total": total,
                     "profit_loss": profit_loss
@@ -240,7 +241,7 @@ def add_record():
             portfolio_contents = user_portfolio_contents["id"]
             portfolio_contents.append({
                 "token_id": token_id,
-                "holdings": quantity,
+                "holdings": float(quantity),
                 "value": value,
                 "grand_total": total,
                 "profit_loss": profit_loss
@@ -254,15 +255,14 @@ def add_record():
             _id = user_portfolio_contents["_id"]
             portfolio_contents = user_portfolio_contents["id"]
 
-            updated_holdings = float(quantity) + float(
-                token_id_object.get("holdings"))
-            updated_value = float(price) * float(
-                token_id_object.get("holdings"))
-            updated_total = float(total) + float(
-                token_id_object.get("grand_total"))
-            updated_profit = (
-                float(token_id_object.get("value")) -
-                float(token_id_object.get("grand_total")))
+            updated_holdings = (float(quantity)
+                                + float(token_id_object.get("holdings")))
+            updated_value = (float(price)
+                             * float(token_id_object.get("holdings")))
+            updated_total = (float(total)
+                             + float(token_id_object.get("grand_total")))
+            updated_profit = (float(token_id_object.get("value"))
+                              - float(token_id_object.get("grand_total")))
             # Calculates new portfolio contents adding,
             # new record to portfolio values
 
@@ -279,30 +279,31 @@ def add_record():
             # Updates the user's portfolio by adding all matching,
             # token_id's records value
 
-        elif record_type == "Sell":
-            sell_holdings = (
-                float(token_id_object.get("holdings") - float(quantity)))
-            sell_total = (
-                float(token_id_object.get("grand_total") -
-                      float(token_id_object.get("value"))))
-            # Calculates new portfolio contents subtracting,
-            # new record to portfolio values
+            elif record_type == "Sell":
+                _id = user_portfolio_contents["_id"]
+                portfolio_contents = user_portfolio_contents["id"]
+                sell_holdings = (float(token_id_object.get("holdings")
+                                 - float(quantity)))
+                sell_total = (float(token_id_object.get("grand_total")
+                              - float(token_id_object.get("value"))))
+                # Calculates new portfolio contents subtracting,
+                # new record to portfolio values
 
-            portfolio_contents[token_id_object_position] = {
-                "token_id": token_id,
-                "holdings": sell_holdings,
-                "value": updated_value,
-                "grand_total": sell_total,
-                "profit_loss": updated_profit
-            }
-            mongo.db.portfolios.update_one(
-                {"_id": _id}, {"$set": {"id": portfolio_contents}})
-        # Updates the user's portfolio by subtracting all matching,
-        # token_id's records value
+                portfolio_contents[token_id_object_position] = {
+                    "token_id": token_id,
+                    "holdings": sell_holdings,
+                    "value": updated_value,
+                    "grand_total": sell_total,
+                    "profit_loss": updated_profit
+                }
+                mongo.db.portfolios.update_one(
+                    {"_id": _id}, {"$set": {"id": portfolio_contents}})
+            # Updates the user's portfolio by subtracting all matching,
+            # token_id's records value
 
         flash("Record successfully added")
         return redirect(url_for("get_records",
-                        username=username, results=results))
+                        username=username))
 
     return render_template("add_record.html")
 
