@@ -182,6 +182,41 @@ def add_record():
             "total": float(total)
         }
         mongo.db.records.insert_one(records)
+
+# =======================================================
+#                       PORTFOILIO
+# =======================================================
+
+        price = 5
+        # Update
+        value = float(price) * float(quantity)
+        profit_loss = float(value) - float(total)
+
+        user_portfolio_contents = mongo.db.portfolios.find_one(
+            {"username": session["user"]}
+        )
+
+        find_portfolio_user = None
+        if user_portfolio_contents is not None:
+            find_portfolio_user = mongo.db.portfolios.find_one(
+                {"username": session["user"]})["username"]
+        # If a portfolio username matches the session user exists
+
+        if user_portfolio_contents is None:
+            my_portfolios = {
+                "username": session["user"],
+                "id": [{
+                    "token_id": token_id,
+                    "holdings": quantity,
+                    "value": value,
+                    "grand_total": total,
+                    "profit_loss": profit_loss
+                }]
+            }
+            mongo.db.portfolios.insert_one(my_portfolios)
+        # If there are no portfolios matching the session user, 
+        # a new one is created
+
         flash("Record successfully added")
         return redirect(url_for("get_records",
                         username=username, results=results))

@@ -531,6 +531,12 @@ Additions:
 
 - User portfolio displays on portfolio page
 
+### 6.30 Successfully creates portfolio if user has no records
+
+Additions:
+
+- Successfully creates portfolio if user has no records
+
 ## 7.0 Deployment
 
 ### 7.1 Local deployment
