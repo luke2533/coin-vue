@@ -537,6 +537,12 @@ Additions:
 
 - Successfully creates portfolio if user has no records
 
+### 6.31 Successfully adds first record of new token to pre-exisiting portfolio
+
+Additions:
+
+- Successfully adds first record of new token to pre-exisiting portfolio
+
 ## 7.0 Deployment
 
 ### 7.1 Local deployment

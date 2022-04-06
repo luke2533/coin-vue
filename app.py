@@ -191,6 +191,9 @@ def add_record():
         # Update
         value = float(price) * float(quantity)
         profit_loss = float(value) - float(total)
+        token_id_exists = False
+        token_id_object = {}
+        token_id_object_position = 0
 
         user_portfolio_contents = mongo.db.portfolios.find_one(
             {"username": session["user"]}
@@ -214,8 +217,27 @@ def add_record():
                 }]
             }
             mongo.db.portfolios.insert_one(my_portfolios)
-        # If there are no portfolios matching the session user, 
+        # If there are no portfolios matching the session user,
         # a new one is created
+
+        elif (find_portfolio_user == username and
+              token_id_exists is False):
+
+            _id = user_portfolio_contents["_id"]
+            # Gets portfolio by object id
+
+            portfolio_contents = user_portfolio_contents["id"]
+            portfolio_contents.append({
+                "token_id": token_id,
+                "holdings": quantity,
+                "value": value,
+                "grand_total": total,
+                "profit_loss": profit_loss
+            })
+            mongo.db.portfolios.update_one(
+                {"_id": _id}, {"$set": {"id": portfolio_contents}})
+        # If the username matches a document but is the first record,
+        # of the token it adds a new instance to the array
 
         flash("Record successfully added")
         return redirect(url_for("get_records",
