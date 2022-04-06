@@ -10,8 +10,9 @@ window.onload = tokenId();
 
 // Home page
 
-$(function () {
-    $('#myTab li:last-child a').tab('show')
+$('#pills-tab a').on('click', function (e) {
+    e.preventDefault()
+    $(this).tab('show')
 })
 
 // Add record page

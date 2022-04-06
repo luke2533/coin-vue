@@ -26,7 +26,7 @@ mongo = PyMongo(app)
 
 @app.route("/coinvue")
 def coinvue():
-    results = crypto.crypto_top_100()
+    results = crypto.crypto_top_50()
 
     for result in results:
 
@@ -122,6 +122,7 @@ def logout():
 def portfolio():
     username = mongo.db.users.find_one(
             {"username": session["user"]})["username"]
+    tokens = crypto.crypto_top_50()
 
     portfolios = []
 
@@ -133,7 +134,7 @@ def portfolio():
             portfolios = user_portfolio_display["id"]
 
     return render_template(("portfolio.html"), username=username,
-                           portfolios=portfolios)
+                           portfolios=portfolios, tokens=tokens)
 
 
 @app.route("/get_record/<username>")
@@ -157,7 +158,7 @@ def get_records(username):
 def add_record():
     username = mongo.db.users.find_one(
             {"username": session["user"]})["username"]
-    results = crypto.crypto_top_100()
+    results = crypto.crypto_top_50()
 
     if request.method == "POST":
 
@@ -200,7 +201,8 @@ def add_record():
         )
 
         if user_portfolio_contents is not None:
-            for position, token in enumerate(user_portfolio_contents.get("id")):
+            for position, token in enumerate(
+                    user_portfolio_contents.get("id")):
                 if token.get("token_id") == token_id:
                     token_id_exists = True
                     token_id_object = token
@@ -342,6 +344,11 @@ def delete_record(record_id):
 
     flash("Record successfully removed")
     return redirect(url_for("get_records", delete=delete, username=username))
+
+
+# @app.route("/delete_all/record_id", method=["GET", "POST"])
+# def delete_all(record_id):
+#     delete_token = mongo.db.portfolios.delete_one({"_id": ObjectId(record_id)})
 
 
 if __name__ == "__main__":

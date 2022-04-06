@@ -25,7 +25,7 @@
                             {% for record in user_records %}
                                 <tr>
                                     <td class="crypto-name">{{ record.token_id }}</td>
-                                    <td>{{ record.type }}</td>
+                                    <td>{{ record.record_type }}</td>
                                     <td>{{ record.quantity }}</td>
                                     <td>${{ record.per_coin }}</td>
                                     <td>{{ record.date }}</td>

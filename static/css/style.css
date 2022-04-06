@@ -180,7 +180,7 @@ button {
 .record {
     margin: 5px;
     padding: 5px;
-    width: 100% !important;
+    width: 100%;
     background-color: #141414;
     color: white;
 }

@@ -561,6 +561,20 @@ Additions:
 
 Issue #2 RESOLVED: Portfolio creates new object for every record rather then adding previous record values to portfolio values
 
+### 6.34 Add record tabs working, staking record data alters porfolio data correctly, staking and sell orders POST to mongoDB
+
+Additions:
+
+- Add record page tabs working
+- Add record page tabs styled
+- Staking order record successfully POST's to mongoDB
+- Sell order record successfully POST's to mongoDB
+- Staking record data adds to portfolio values
+
+Issue #1 RESOLVED: add_record.html tabs not working
+
+Issue #3: Sell orders do not alter portfolio data instead creating an new object within the array
+
 ## 7.0 Deployment
 
 ### 7.1 Local deployment
