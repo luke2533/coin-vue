@@ -551,7 +551,15 @@ Additions:
 - Sell records totaling new and previous with same token_id
 - Staking records totaling new and previous with same token_id
 
-Issue #2: Portfolio creates new object for every record rather then adding previous record values to portfolio values 
+Issue #2: Portfolio creates new object for every record rather then adding previous record values to portfolio values
+
+### 6.33 Successfully adds new records values to tokens pre-exisiting in the portfolio and issue #2 RESOLVED
+
+Additions:
+
+- Successfully adds new records values to tokens pre-exisiting in the portfolio
+
+Issue #2 RESOLVED: Portfolio creates new object for every record rather then adding previous record values to portfolio values
 
 ## 7.0 Deployment
 

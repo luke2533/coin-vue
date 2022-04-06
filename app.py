@@ -129,7 +129,7 @@ def portfolio():
         user_portfolio_display = (
             mongo.db.portfolios.find_one({"username": session["user"]}))
         if user_portfolio_display is not None:
-            portfolio_id = user_portfolio_display["_id"]
+            # portfolio_id = user_portfolio_display["_id"]
             portfolios = user_portfolio_display["id"]
 
     return render_template(("portfolio.html"), username=username,
@@ -198,6 +198,15 @@ def add_record():
         user_portfolio_contents = mongo.db.portfolios.find_one(
             {"username": session["user"]}
         )
+
+        if user_portfolio_contents is not None:
+            for position, token in enumerate(user_portfolio_contents.get("id")):
+                if token.get("token_id") == token_id:
+                    token_id_exists = True
+                    token_id_object = token
+                    token_id_object_position = position
+                    break
+        # Loops through array for the "token" that matches the token_id
 
         find_portfolio_user = None
         if user_portfolio_contents is not None:
