@@ -525,6 +525,12 @@ Additions:
 
 - Delete recored successfully removes records from mongoDB
 
+### 6.29 Displays user;s portfolio contents
+
+Additions:
+
+- User portfolio displays on portfolio page
+
 ## 7.0 Deployment
 
 ### 7.1 Local deployment

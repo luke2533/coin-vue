@@ -36,20 +36,22 @@
                         </thead>
 
                         <tbody class="crypto-table">
-                            <tr>
-                                <td class="crypto-name">Bitcoin</td>
-                                <td>$35000</td>
-                                <td>3.5%</td>
-                                <td>0.5</td>
-                                <td>$17500</td>
-                                <td>$2500</td>
-                                <td><a href="{{ url_for('get_records', username=username) }}">:</a></td>
-                                <td>
-                                    <a href="#">Add +</a> |
-                                    <a href="#">Delete</a>
-                                    <!-- Delete all -->
-                                </td>
-                            </tr>
+                            {% for portfolio in portfolios %}
+                                <tr>
+                                    <td class="crypto-name">{{ portfolio.token_id }}</td>
+                                    <td>$35000</td>
+                                    <td>3.5%</td>
+                                    <td>{{ portfolio.holdings }}</td>
+                                    <td>{{ portfolio.value }}</td>
+                                    <td>{{ portfolio.profit_loss }}</td>
+                                    <td><a href="{{ url_for('get_records', username=username) }}">:</a></td>
+                                    <td>
+                                        <a href="#">Add +</a> |
+                                        <a href="#">Delete</a>
+                                        <!-- Delete all -->
+                                    </td>
+                                </tr>
+                            {% endfor %}
                         </tbody>
                     </table>
                 </div>

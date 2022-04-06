@@ -123,7 +123,17 @@ def portfolio():
     username = mongo.db.users.find_one(
             {"username": session["user"]})["username"]
 
-    return render_template(("portfolio.html"), username=username)
+    portfolios = []
+
+    if session["user"] == username:
+        user_portfolio_display = (
+            mongo.db.portfolios.find_one({"username": session["user"]}))
+        if user_portfolio_display is not None:
+            portfolio_id = user_portfolio_display["_id"]
+            portfolios = user_portfolio_display["id"]
+
+    return render_template(("portfolio.html"), username=username,
+                           portfolios=portfolios)
 
 
 @app.route("/get_record/<username>")
