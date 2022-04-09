@@ -589,6 +589,12 @@ Additions:
 
 - Editing records correctly updates portfolio values
 
+### 6.37 Fixed value and profit/loss for adding records to portfolio that already exist
+
+Additions:
+
+- Fixed value and profit/loss for adding records to portfolio that already exist
+
 ## 7.0 Deployment
 
 ### 7.1 Local deployment

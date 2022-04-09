@@ -249,14 +249,16 @@ def add_record():
             _id = user_portfolio_contents["_id"]
             portfolio_contents = user_portfolio_contents["id"]
 
+            old_holdings = float(token_id_object.get("holdings"))
+
             updated_holdings = (float(quantity)
-                                + float(token_id_object.get("holdings")))
+                                + float(old_holdings))
             updated_value = (float(price)
-                             * float(token_id_object.get("holdings")))
+                             * float(updated_holdings))
             updated_total = (float(total)
                              + float(token_id_object.get("grand_total")))
-            updated_profit = (float(token_id_object.get("value"))
-                              - float(token_id_object.get("grand_total")))
+            updated_profit = (float(updated_value)
+                              - float(updated_total))
             # Calculates new portfolio contents adding,
             # new record to portfolio values
 
