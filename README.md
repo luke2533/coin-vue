@@ -595,6 +595,12 @@ Additions:
 
 - Fixed value and profit/loss for adding records to portfolio that already exist
 
+### 6.38 When deleting records the portfolio values are updated
+
+Additions:
+
+- When deleting records the portfolio values are updated
+
 ## 7.0 Deployment
 
 ### 7.1 Local deployment

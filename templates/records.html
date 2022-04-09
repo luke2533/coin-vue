@@ -34,7 +34,9 @@
                                     <td>
                                         <a href="{{ url_for('edit_record', record_id=record._id) }}">Edit</a> |
                                         <!-- Need some sort of ID for record -->
-                                        <a href="{{ url_for('delete_record', record_id=record._id) }}">Delete</a>
+                                        <form method="POST" action="{{ url_for('delete_record', record_id=record._id) }}">
+                                            <button type="submit">Delete</button>
+                                        </form>
                                         <!-- Delete record -->
                                     </td>
                                 </tr>

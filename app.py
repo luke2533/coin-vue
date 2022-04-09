@@ -335,8 +335,6 @@ def edit_record(record_id):
 
         price = 2
         # Subject to change
-        value = float(price) * float(new_quantity)
-        profit_loss = float(value) - float(new_total)
         token_id_exists = False
         token_id_object = {}
         token_id_object_position = 0
@@ -399,12 +397,65 @@ def edit_record(record_id):
 
 @app.route("/delete_record/<record_id>", methods=["GET", "POST"])
 def delete_record(record_id):
-    delete = mongo.db.records.delete_one({"_id": ObjectId(record_id)})
+    record = mongo.db.records.find_one({"_id": ObjectId(record_id)})
+
     username = mongo.db.users.find_one(
             {"username": session["user"]})["username"]
 
+    if request.method == "POST":
+
+        price = 2
+        # Subject to change
+        token_id_exists = False
+        token_id_object = {}
+        token_id_object_position = 0
+        token_id = record["token_id"]
+        quantity = record["quantity"]
+        total = record["total"]
+
+        user_portfolio_contents = mongo.db.portfolios.find_one(
+            {"username": session["user"]}
+        )
+
+        if user_portfolio_contents is not None:
+            for position, token in enumerate(
+                    user_portfolio_contents.get("id")):
+                if token.get("token_id") == token_id:
+                    token_id_exists = True
+                    token_id_object = token
+                    token_id_object_position = position
+                    break
+
+        find_portfolio_user = None
+        if user_portfolio_contents is not None:
+            find_portfolio_user = mongo.db.portfolios.find_one(
+                {"username": session["user"]})["username"]
+
+        if find_portfolio_user == username and token_id_exists is True:
+            _id = user_portfolio_contents["_id"]
+            portfolio_contents = user_portfolio_contents["id"]
+
+            holdings = token_id_object.get("holdings")
+            grand_total = token_id_object.get("grand_total")
+
+            updated_holdings = float(holdings) - float(quantity)
+            updated_value = float(price) * float(updated_holdings)
+            updated_grand_total = float(grand_total) - float(total)
+            updated_profit = float(updated_value) - (updated_grand_total)
+
+            portfolio_contents[token_id_object_position] = {
+                "token_id": token_id,
+                "holdings": updated_holdings,
+                "value": updated_value,
+                "grand_total": updated_grand_total,
+                "profit_loss": updated_profit
+            }
+            mongo.db.portfolios.update_one({"_id": _id}, {"$set":
+                                           {"id": portfolio_contents}})
+            mongo.db.records.delete_one({"_id": ObjectId(record_id)})
+
     flash("Record successfully removed")
-    return redirect(url_for("get_records", delete=delete, username=username))
+    return redirect(url_for("get_records", record=record, username=username))
 
 
 if __name__ == "__main__":
