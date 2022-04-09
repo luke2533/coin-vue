@@ -41,16 +41,8 @@
                                     <td>{{ result.changePercent24Hr }}</td>
                                     <td>{{ result.marketCapUsd }}</td>
                                     <td>{{ result.volumeUsd24Hr }}</td>
-                                    <!-- <input type="hidden" value="{{ result.name }}" class="token" name="name">
-                                    <td><a href="javascript:void(0)" id="" onclick="getToken()">+</a></td> -->
-                                    <!-- <td><a href="#" class="token" onclick="token()">+</a></td> -->
-                                    <!-- <td><a href="#" onclick="getToken()"><input class="token" type="hidden" value="{{ result.id }}">+</a></td> -->
-                                    
-                                    <td><a href="{{ url_for('add_record') }}"><input class="token" type="text" value="{{ result.id }}">+</a></td>
-                                    <td>{{ result.id }}</td>
-                                    <td>{{ loop.index }}</td>
+                                    <td><a href="{{ url_for('add_record') }}">+</a></td>
                                 </tr>
-                                <!-- <input type="text" name="name" value=""> -->
                             {% endfor %}
                         </tbody>
                     </table>

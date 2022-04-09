@@ -583,6 +583,12 @@ Additions:
 
 Issue #3 RESOLVED: Sell orders do not alter portfolio data instead creating an new object within the array
 
+### 6.36 Editing records correctly updates portfolio values
+
+Additions:
+
+- Editing records correctly updates portfolio values
+
 ## 7.0 Deployment
 
 ### 7.1 Local deployment

@@ -30,7 +30,7 @@
             <div class="collapse navbar-collapse" id="nav-menu">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link btn-link" href="{{ url_for('coinvue') }}">Home</a>
+                        <a class="nav-link btn-link" href="/">Home</a>
                     </li>
                     {% if session.user %}
                         {% if username is not none %}
@@ -94,9 +94,13 @@
     
                     <div class="col-6 col-md-5 col-xl-4">
                         <h2 class="footer-title">Navigation</h2>
-                        <a href="{{ url_for('coinvue') }}" class="footer-link footer-mobile-link"><i class="fas fa-home"></i> Home</a>
+                        <a href="/" class="footer-link footer-mobile-link"><i class="fas fa-home"></i> Home</a>
                         <a href="{{ url_for('portfolio') }}" class="footer-link footer-mobile-link"><i class="fas fa-coins"></i> My Portfolio</a>
-                        <a href="{{ url_for('login') }}" class="footer-link footer-mobile-link"><i class="fas fa-user"></i> Log in</a>
+                        {% if session.user %}
+                            <a href="{{ url_for('logout') }}" class="footer-link footer-mobile-link"><i class="fas fa-user"></i> Log out</a>
+                        {% else %}
+                            <a href="{{ url_for('login') }}" class="footer-link footer-mobile-link"><i class="fas fa-user"></i> Log in</a>
+                        {% endif %}
                     </div>
                 </div>
             </div>    

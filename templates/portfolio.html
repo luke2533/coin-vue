@@ -3,12 +3,12 @@
 
     <div class="container-fluid">
         <div class="row justify-content-center">
-            <div class="col-10 col-md-11">
-                <h2>{{ username }}.capitalize() 's Portfolio</h2>
+            <div class="col-10 col-md-11 col-xl-9">
+                <h2>{{ username.capitalize() }}'s Portfolio</h2>
                 <h3>$total_value</h3>
                 <a href="{{ url_for('add_record') }}" class="prime-btn">Add new +</a>
                 <!-- DELETE LATER -->
-                <a href="{{ url_for('get_records', username=username) }}">Records</a>
+                <a href="{{ url_for('get_records', username=username) }}" class="prime-btn ml-2">Records</a>
                 <!-- DELETE LATER -->
             </div>
         </div>
@@ -18,7 +18,7 @@
 
     <div class="container-fluid">
         <div class="row justify-content-center">
-            <div class="col-11">
+            <div class="col-11 col-xl-9">
                 <div class="table-overflow">
                     <table class="table table-striped">
                         <thead class="table-dark">
@@ -30,8 +30,6 @@
                                 <th scope="col">Value</th>
                                 <th scope="col">Profit/Loss</th>
                                 <th scope="col">View records</th>
-                                <th scope="col">Action</th>
-                                <!-- Try on the home page too -->
                             </tr>
                         </thead>
 
@@ -42,14 +40,9 @@
                                     <td>$35000</td>
                                     <td>3.5%</td>
                                     <td>{{ portfolio.holdings }}</td>
-                                    <td>{{ portfolio.value }}</td>
-                                    <td>{{ portfolio.profit_loss }}</td>
+                                    <td>${{ portfolio.value }}</td>
+                                    <td>${{ portfolio.profit_loss }}</td>
                                     <td><a href="{{ url_for('get_records', username=username) }}">:</a></td>
-                                    <td>
-                                        <a href="#">Add +</a> |
-                                        <a href="#">Delete</a>
-                                        <!-- Delete all -->
-                                    </td>
                                 </tr>
                             {% endfor %}
                         </tbody>

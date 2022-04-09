@@ -1,5 +1,4 @@
 import os
-import uuid
 from flask import (
     Flask, flash, render_template,
     redirect, request, session, url_for)
@@ -22,9 +21,6 @@ mongo = PyMongo(app)
 
 
 @app.route("/")
-
-
-@app.route("/coinvue")
 def coinvue():
     results = crypto.crypto_top_50()
 
@@ -169,9 +165,7 @@ def add_record():
         total = float(quantity) * float(per_coin)
         date = request.form.get("date")
         notes = request.form.get("notes")
-
         token_id = request.form.get("token_id")
-        # Subject to change
 
         records = {
             "username": session["user"],
@@ -189,7 +183,7 @@ def add_record():
 #                       PORTFOILIO
 # =======================================================
 
-        price = 5
+        price = 2
         # Update
         value = float(price) * float(quantity)
         profit_loss = float(value) - float(total)
@@ -311,26 +305,90 @@ def add_record():
 @app.route("/edit_record/<record_id>", methods=["GET", "POST"])
 def edit_record(record_id):
     record = mongo.db.records.find_one({"_id": ObjectId(record_id)})
+
     username = mongo.db.users.find_one(
             {"username": session["user"]})["username"]
 
     if request.method == "POST":
 
-        edit_quantity = request.form.get("edit_quantity")
-        edit_per_coin = request.form.get("edit_per_coin")
-        edit_date = request.form.get("edit_date")
-        edit_notes = request.form.get("edit_notes")
-        edit_total = float(edit_quantity) * float(edit_per_coin)
+        new_quantity = request.form.get("edit_quantity")
+        new_per_coin = request.form.get("edit_per_coin")
+        new_date = request.form.get("edit_date")
+        new_notes = request.form.get("edit_notes")
+        new_total = float(new_quantity) * float(new_per_coin)
 
         update_record = {
-            "quantity": float(edit_quantity),
-            "per_coin": float(edit_per_coin),
-            "date": edit_date,
-            "notes": edit_notes,
-            "total": float(edit_total)
+            "quantity": float(new_quantity),
+            "per_coin": float(new_per_coin),
+            "date": new_date,
+            "notes": new_notes,
+            "total": float(new_total)
         }
         mongo.db.records.update_one({"_id": ObjectId(record_id)},
                                     {"$set": update_record})
+
+# =======================================================
+#                       PORTFOILIO
+# =======================================================
+
+        price = 2
+        # Subject to change
+        value = float(price) * float(new_quantity)
+        profit_loss = float(value) - float(new_total)
+        token_id_exists = False
+        token_id_object = {}
+        token_id_object_position = 0
+        token_id = record["token_id"]
+
+        user_portfolio_contents = mongo.db.portfolios.find_one(
+            {"username": session["user"]}
+        )
+
+        if user_portfolio_contents is not None:
+            for position, token in enumerate(
+                    user_portfolio_contents.get("id")):
+                if token.get("token_id") == token_id:
+                    token_id_exists = True
+                    token_id_object = token
+                    token_id_object_position = position
+                    break
+
+        find_portfolio_user = None
+        if user_portfolio_contents is not None:
+            find_portfolio_user = mongo.db.portfolios.find_one(
+                {"username": session["user"]})["username"]
+
+        if find_portfolio_user == username and token_id_exists is True:
+            _id = user_portfolio_contents["_id"]
+            portfolio_contents = user_portfolio_contents["id"]
+
+            old_quantity = record["quantity"]
+            old_total = record["total"]
+            old_holdings = token_id_object.get("holdings")
+            old_grand_total = token_id_object.get("grand_total")
+
+            holdings = float(old_holdings) - float(old_quantity)
+            grand_total = float(old_grand_total) - float(old_total)
+
+            new_holdings = (float(new_quantity)
+                            + float(holdings))
+            new_value = (float(price)
+                         * float(new_holdings))
+            new_grand_total = (float(new_total)
+                               + float(grand_total))
+            new_profit = (float(new_value)
+                          - float(new_grand_total))
+
+            portfolio_contents[token_id_object_position] = {
+                "token_id": token_id,
+                "holdings": new_holdings,
+                "value": new_value,
+                "grand_total": new_total,
+                "profit_loss": new_profit
+            }
+            mongo.db.portfolios.update_one({"_id": _id}, {"$set":
+                                           {"id": portfolio_contents}})
+
         flash("Record successfully updated")
         return redirect(url_for("get_records", username=username))
 
@@ -345,11 +403,6 @@ def delete_record(record_id):
 
     flash("Record successfully removed")
     return redirect(url_for("get_records", delete=delete, username=username))
-
-
-# @app.route("/delete_all/record_id", method=["GET", "POST"])
-# def delete_all(record_id):
-#     delete_token = mongo.db.portfolios.delete_one({"_id": ObjectId(record_id)})
 
 
 if __name__ == "__main__":
