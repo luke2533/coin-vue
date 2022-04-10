@@ -9,9 +9,6 @@
 
                 <form method="POST" action="{{ url_for('edit_record', record_id=record._id) }}">
 
-                    {% for token in results %}
-                        <input type="hidden" name="token_data" id="token_data" value='{"token_id": "{{ token.name }}", "token": "{{ token.id }}"}'>
-                    {% endfor %}
                     <input type="text" placeholder="Quantity" class="record" id="edit_quantity" name="edit_quantity">
                     <input type="text" placeholder="Price Per Coin" class="record" id="edit_per_coin" name="edit_per_coin">
                     <input type="date" placeholder="Date" class="record" id="edit_date" name="edit_date">

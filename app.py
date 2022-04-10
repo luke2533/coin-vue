@@ -126,8 +126,6 @@ def portfolio():
             results = {"id": []}
             total = []
 
-            value_list = []
-
             for token in portfolios:
                 tokens = token["tokens"]
 
@@ -144,18 +142,20 @@ def portfolio():
                 price = coin_data["priceUsd"]
                 day_percent = coin_data["changePercent24Hr"]
                 value = float(price) * float(token["holdings"])
+                profit_loss = float(value) - float(token["grand_total"])
+                print(profit_loss)
 
                 new_results = results["id"]
                 new_results.append({
                     "price": float(price),
                     "day_percent": float(day_percent),
-                    "value": value
+                    "value": value,
+                    "profit_loss": profit_loss
                 })
 
                 token_id = results["id"]
 
-                token_value = token["value"]
-                total.append(token_value)
+                total.append(value)
                 total_value = sum(total)
 
         else:
@@ -445,11 +445,6 @@ def edit_record(record_id):
                                float(grand_total))
             new_profit = (float(new_value) -
                           float(new_grand_total))
-
-            token_data = request.form.get("token_data")
-            token_dict = json.loads(token_data)
-            token_id = token_dict['token_id']
-            tokens = token_dict['token']
 
             portfolio_contents[token_id_object_position] = {
                 "tokens": tokens,
