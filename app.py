@@ -1,4 +1,5 @@
 import os
+import json
 from flask import (
     Flask, flash, render_template,
     redirect, request, session, url_for)
@@ -147,14 +148,12 @@ def get_records(username):
                            user_records=user_records)
 
 
-# @app.route("/add_record/<token_id>", methods=["GET", "POST"])
 @app.route("/add_record", methods=["GET", "POST"])
-# <token_id> // Like Bitcoin
 # Remove select maybe from add record page
 def add_record():
     username = mongo.db.users.find_one(
             {"username": session["user"]})["username"]
-    # results = crypto.crypto_top_50()
+    results = crypto.crypto_top_50()
     # Add results at the bottom
 
     if request.method == "POST":
@@ -165,7 +164,11 @@ def add_record():
         total = float(quantity) * float(per_coin)
         date = request.form.get("date")
         notes = request.form.get("notes")
-        token_id = request.form.get("token_id")
+
+        token_data = request.form.get("token_data")
+        token_dict = json.loads(token_data)
+        token_id = token_dict['token_id']
+        tokens = token_dict['token']
 
         records = {
             "username": session["user"],
@@ -215,6 +218,7 @@ def add_record():
             my_portfolios = {
                 "username": session["user"],
                 "id": [{
+                    "tokens": tokens,
                     "token_id": token_id,
                     "holdings": float(quantity),
                     "value": value,
@@ -234,6 +238,7 @@ def add_record():
 
             portfolio_contents = user_portfolio_contents["id"]
             portfolio_contents.append({
+                "tokens": tokens,
                 "token_id": token_id,
                 "holdings": float(quantity),
                 "value": value,
@@ -264,6 +269,7 @@ def add_record():
 
             if record_type in ["Buy", "Staking"]:
                 portfolio_contents[token_id_object_position] = {
+                    "tokens": tokens,
                     "token_id": token_id,
                     "holdings": updated_holdings,
                     "value": updated_value,
@@ -286,6 +292,7 @@ def add_record():
                 # new record to portfolio values
 
                 portfolio_contents[token_id_object_position] = {
+                    "tokens": tokens,
                     "token_id": token_id,
                     "holdings": sell_holdings,
                     "value": updated_value,
@@ -301,7 +308,7 @@ def add_record():
         return redirect(url_for("get_records",
                         username=username))
 
-    return render_template("add_record.html")
+    return render_template("add_record.html", results=results)
 
 
 @app.route("/edit_record/<record_id>", methods=["GET", "POST"])

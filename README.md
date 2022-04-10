@@ -601,6 +601,13 @@ Additions:
 
 - When deleting records the portfolio values are updated
 
+### 6.39 Add record select token dropdown working
+
+Additions:
+
+- Add record select token dropdown working
+- Fixed issue where portfolio records append twice
+
 ## 7.0 Deployment
 
 ### 7.1 Local deployment
