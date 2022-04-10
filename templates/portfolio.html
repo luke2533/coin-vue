@@ -5,7 +5,7 @@
         <div class="row justify-content-center">
             <div class="col-10 col-md-11 col-xl-9">
                 <h2>{{ username.capitalize() }}'s Portfolio</h2>
-                <h3>$total_value</h3>
+                <h3>${{ total_value }}</h3>
                 <a href="{{ url_for('add_record') }}" class="prime-btn">Add new +</a>
                 <a href="{{ url_for('get_records', username=username) }}" class="prime-btn ml-2">Records</a>
             </div>
@@ -40,7 +40,7 @@
                                         <td>${{ token.price }}</td>
                                         <td>{{ token.day_percent }}%</td>
                                         <td>{{ portfolio.holdings }}</td>
-                                        <td>${{ portfolio.value }}</td>
+                                        <td>${{ token.value }}</td>
                                         <td>${{ portfolio.profit_loss }}</td>
                                         <td><a href="{{ url_for('get_records', username=username) }}" class="record-link"><i class="fas fa-eye"></i></a></td>
                                     </tr>

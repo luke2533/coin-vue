@@ -255,7 +255,7 @@ Delete Modal Universal mockup:
 - Staking rewards records - Rewards from passive income coins
 - Edit records - Change pre existing records
 - Delete records - Permanently remove records
-- Updated portfolio performance - Updates changes in value when user reloads page
+- Total portfolio value - Updates when users adds, edits or removes record
 
 ### 3.2 Features left to implement
 
@@ -266,6 +266,7 @@ Delete Modal Universal mockup:
 - Search bar for assets - Search bar to better filter down cryptocurrencies
 - Crypto info page - Pages for each crypto with further information on them
 - ChartJS portfolio chart - Chart to track and visualize portfolio history
+- Updated portfolio performance - Updates changes in value when user reloads page
 
 ## 4.0 Technologies used
 
@@ -627,6 +628,14 @@ Additions:
 
 - Value is now calculated by the tokens price
 - Fixed small price bugs
+
+### 6.43 Portfolio total value displays user's total
+
+Additions:
+
+- Portfolio total value displays user's total
+
+Issue #4: Portfolio total value doesn't update when the page is reloaded (This could be fixed with JS)
 
 ## 7.0 Deployment
 

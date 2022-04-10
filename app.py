@@ -124,6 +124,9 @@ def portfolio():
             day_percent = 0
 
             results = {"id": []}
+            total = []
+
+            value_list = []
 
             for token in portfolios:
                 tokens = token["tokens"]
@@ -140,19 +143,27 @@ def portfolio():
 
                 price = coin_data["priceUsd"]
                 day_percent = coin_data["changePercent24Hr"]
+                value = float(price) * float(token["holdings"])
 
                 new_results = results["id"]
                 new_results.append({
                     "price": float(price),
-                    "day_percent": float(day_percent)
+                    "day_percent": float(day_percent),
+                    "value": value
                 })
 
                 token_id = results["id"]
+
+                token_value = token["value"]
+                total.append(token_value)
+                total_value = sum(total)
+
         else:
             return redirect(url_for("add_record"))
 
     return render_template(("portfolio.html"), username=username,
-                           portfolios=portfolios, token_id=token_id)
+                           portfolios=portfolios, token_id=token_id,
+                           total_value=total_value)
 
 
 @app.route("/get_record/<username>")
