@@ -33,12 +33,6 @@ def coinvue():
         cryptoMcap = float(result["marketCapUsd"])
         cryptoVolume = float(result["volumeUsd24Hr"])
 
-        # token_id = result["id"]
-        # token_id = [result["id"]]
-
-        # for token in token_id:
-        #     print(token)
-
         result["priceUsd"] = "$" + "{:.4f}".format(cryptoPrice)
         result["changePercent24Hr"] = "{:.4f}%".format(cryptoPercent)
         result["marketCapUsd"] = "$" + "{:.4f}".format(cryptoMcap)
@@ -80,7 +74,6 @@ def signup():
         session["user"] = request.form.get("username").lower()
         flash("Register complete")
         return redirect(url_for("coinvue"))
-        # Change to portfolio
     return render_template("signup.html")
 
 
@@ -154,7 +147,9 @@ def portfolio():
                     "day_percent": float(day_percent)
                 })
 
-            token_id = results["id"]
+                token_id = results["id"]
+        else:
+            return redirect(url_for("add_record"))
 
     return render_template(("portfolio.html"), username=username,
                            portfolios=portfolios, token_id=token_id)
@@ -168,19 +163,16 @@ def get_records(username):
     if session["user"] == username:
         user_records = mongo.db.records.find({"username": session["user"]}
                                              ).sort("date", -1)
-    # Will need to add the id to this bit i think or if statement
 
     return render_template(("records.html"), username=username,
                            user_records=user_records)
 
 
 @app.route("/add_record", methods=["GET", "POST"])
-# Remove select maybe from add record page
 def add_record():
     username = mongo.db.users.find_one(
             {"username": session["user"]})["username"]
     results = crypto.crypto_top_50()
-    # Add results at the bottom
 
     if request.method == "POST":
 
@@ -212,9 +204,24 @@ def add_record():
 #                       PORTFOILIO
 # =======================================================
 
-        price = 2
-        # Update
+        token_price = tokens
+        print(token_price)
+
+        url = f"http://api.coincap.io/v2/assets/{ token_price }"
+
+        payload = {}
+        headers = {}
+
+        response = requests.request(
+            "GET", url, headers=headers, data=payload)
+        json_data = json.loads(response.text.encode("utf8"))
+        coin_data = json_data["data"]
+
+        price = float(coin_data["priceUsd"])
+        print(price)
+
         value = float(price) * float(quantity)
+        print(value)
         profit_loss = float(value) - float(total)
         token_id_exists = False
         token_id_object = {}
@@ -343,6 +350,7 @@ def edit_record(record_id):
 
     username = mongo.db.users.find_one(
             {"username": session["user"]})["username"]
+    results = crypto.crypto_top_50()
 
     if request.method == "POST":
 
@@ -366,8 +374,6 @@ def edit_record(record_id):
 #                       PORTFOILIO
 # =======================================================
 
-        price = 2
-        # Subject to change
         token_id_exists = False
         token_id_object = {}
         token_id_object_position = 0
@@ -391,6 +397,23 @@ def edit_record(record_id):
             find_portfolio_user = mongo.db.portfolios.find_one(
                 {"username": session["user"]})["username"]
 
+        tokens = token_id_object.get("tokens")
+        token_price = tokens
+        print(token_price)
+
+        url = f"http://api.coincap.io/v2/assets/{ token_price }"
+
+        payload = {}
+        headers = {}
+
+        response = requests.request(
+            "GET", url, headers=headers, data=payload)
+        json_data = json.loads(response.text.encode("utf8"))
+        coin_data = json_data["data"]
+
+        price = float(coin_data["priceUsd"])
+        print(price)
+
         if find_portfolio_user == username and token_id_exists is True:
             _id = user_portfolio_contents["_id"]
             portfolio_contents = user_portfolio_contents["id"]
@@ -412,7 +435,13 @@ def edit_record(record_id):
             new_profit = (float(new_value) -
                           float(new_grand_total))
 
+            token_data = request.form.get("token_data")
+            token_dict = json.loads(token_data)
+            token_id = token_dict['token_id']
+            tokens = token_dict['token']
+
             portfolio_contents[token_id_object_position] = {
+                "tokens": tokens,
                 "token_id": token_id,
                 "holdings": new_holdings,
                 "value": new_value,
@@ -425,7 +454,7 @@ def edit_record(record_id):
         flash("Record successfully updated")
         return redirect(url_for("get_records", username=username))
 
-    return render_template("edit_record.html", record=record)
+    return render_template("edit_record.html", record=record, results=results)
 
 
 @app.route("/delete_record/<record_id>", methods=["GET", "POST"])
@@ -437,8 +466,6 @@ def delete_record(record_id):
 
     if request.method == "POST":
 
-        price = 2
-        # Subject to change
         token_id_exists = False
         token_id_object = {}
         token_id_object_position = 0
@@ -464,6 +491,23 @@ def delete_record(record_id):
             find_portfolio_user = mongo.db.portfolios.find_one(
                 {"username": session["user"]})["username"]
 
+        tokens = token_id_object.get("tokens")
+        token_price = tokens
+        print(token_price)
+
+        url = f"http://api.coincap.io/v2/assets/{ token_price }"
+
+        payload = {}
+        headers = {}
+
+        response = requests.request(
+            "GET", url, headers=headers, data=payload)
+        json_data = json.loads(response.text.encode("utf8"))
+        coin_data = json_data["data"]
+
+        price = float(coin_data["priceUsd"])
+        print(price)
+
         if find_portfolio_user == username and token_id_exists is True:
             _id = user_portfolio_contents["_id"]
             portfolio_contents = user_portfolio_contents["id"]
@@ -476,7 +520,10 @@ def delete_record(record_id):
             updated_grand_total = float(grand_total) - float(total)
             updated_profit = float(updated_value) - (updated_grand_total)
 
+            tokens = token_id_object.get("tokens")
+
             portfolio_contents[token_id_object_position] = {
+                "tokens": tokens,
                 "token_id": token_id,
                 "holdings": updated_holdings,
                 "value": updated_value,

@@ -621,6 +621,13 @@ Additions:
 - HTML small fixes
 - Nav bar responsive on all devices
 
+### 6.42 Value is now calculated by the tokens price and fixed small price bugs
+
+Additions:
+
+- Value is now calculated by the tokens price
+- Fixed small price bugs
+
 ## 7.0 Deployment
 
 ### 7.1 Local deployment
