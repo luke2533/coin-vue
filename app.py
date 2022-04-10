@@ -134,8 +134,6 @@ def portfolio():
 
             for token in portfolios:
                 tokens = token["tokens"]
-                print("-----------------")
-                print(tokens)
 
                 url = f"http://api.coincap.io/v2/assets/{ tokens }"
 
@@ -150,16 +148,12 @@ def portfolio():
                 price = coin_data["priceUsd"]
                 day_percent = coin_data["changePercent24Hr"]
 
-                print(day_percent)
-                print(price)
-
                 new_results = results["id"]
                 new_results.append({
                     "price": float(price),
                     "day_percent": float(day_percent)
                 })
 
-            print(results)
             token_id = results["id"]
 
     return render_template(("portfolio.html"), username=username,
@@ -288,14 +282,14 @@ def add_record():
 
             old_holdings = float(token_id_object.get("holdings"))
 
-            updated_holdings = (float(quantity)
-                                + float(old_holdings))
-            updated_value = (float(price)
-                             * float(updated_holdings))
-            updated_total = (float(total)
-                             + float(token_id_object.get("grand_total")))
-            updated_profit = (float(updated_value)
-                              - float(updated_total))
+            updated_holdings = (float(quantity) +
+                                float(old_holdings))
+            updated_value = (float(price) *
+                             float(updated_holdings))
+            updated_total = (float(total) +
+                             float(token_id_object.get("grand_total")))
+            updated_profit = (float(updated_value) -
+                              float(updated_total))
             # Calculates new portfolio contents adding,
             # new record to portfolio values
 
@@ -316,10 +310,10 @@ def add_record():
             elif record_type == "Sell":
                 _id = user_portfolio_contents["_id"]
                 portfolio_contents = user_portfolio_contents["id"]
-                sell_holdings = (float(token_id_object.get("holdings")
-                                 - float(quantity)))
-                sell_total = (float(token_id_object.get("grand_total")
-                              - float(token_id_object.get("value"))))
+                sell_holdings = (float(token_id_object.get("holdings") -
+                                 float(quantity)))
+                sell_total = (float(token_id_object.get("grand_total") -
+                              float(token_id_object.get("value"))))
                 # Calculates new portfolio contents subtracting,
                 # new record to portfolio values
 
@@ -409,14 +403,14 @@ def edit_record(record_id):
             holdings = float(old_holdings) - float(old_quantity)
             grand_total = float(old_grand_total) - float(old_total)
 
-            new_holdings = (float(new_quantity)
-                            + float(holdings))
-            new_value = (float(price)
-                         * float(new_holdings))
-            new_grand_total = (float(new_total)
-                               + float(grand_total))
-            new_profit = (float(new_value)
-                          - float(new_grand_total))
+            new_holdings = (float(new_quantity) +
+                            float(holdings))
+            new_value = (float(price) *
+                         float(new_holdings))
+            new_grand_total = (float(new_total) +
+                               float(grand_total))
+            new_profit = (float(new_value) -
+                          float(new_grand_total))
 
             portfolio_contents[token_id_object_position] = {
                 "token_id": token_id,
@@ -500,4 +494,4 @@ def delete_record(record_id):
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
-            debug=True)
+            debug=bool(os.environ["DEBUG_MODE"]))

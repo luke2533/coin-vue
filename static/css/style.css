@@ -48,6 +48,13 @@ button {
 
 /* Nav-bar */
 
+#nav-menu {
+    z-index: 999;
+    background-color: #161b22;
+    padding: 15px;
+    width: 100% !important;
+}
+
 .nav-bar {
     background-color: #161b22;
     height: 125px;
@@ -84,6 +91,7 @@ button {
     padding: 10px;
     margin: 5px;
     border-radius: 10px;
+    padding-left: 10px !important;
 }
 
 .nav-link:hover {
@@ -167,6 +175,22 @@ button {
     overflow: auto;
 }
 
+.record-link {
+    background-color: #141414;
+    border: #FFAC5E 1px solid;
+    border-radius: 10px;
+    color: white;
+    padding: 7.5px;
+    margin-right: 5px;
+    font-size: 0.9em !important;
+}
+
+.record-link:hover {
+    background-color: #FFAC5E;
+    color: black;
+    border: black 1px solid;
+}
+
 /* Records page */
 
 /* Add record page */
@@ -195,9 +219,18 @@ button {
 
 /* Breakpoints */
 
+@media (min-width: 993px) {
+    .scroll {
+        display: none;
+    }
+}
+
 @media (max-width: 992px) {
     .table-overflow {
         overflow: auto !important;
+    }
+    .scroll {
+        color: white;
     }
 }
 
@@ -223,9 +256,6 @@ button {
 }
 
 @media (max-width: 321px) {
-    .navbar {
-        flex-wrap: nowrap;
-    }
     .logo {
         height: 65px;
         width: 65px;

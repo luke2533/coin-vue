@@ -614,6 +614,13 @@ Additions:
 
 - Portfolio page displays correct token's price and 24hr percent change
 
+### 6.41 HTML and CSS small fixes
+
+Additions:
+
+- HTML small fixes
+- Nav bar responsive on all devices
+
 ## 7.0 Deployment
 
 ### 7.1 Local deployment
