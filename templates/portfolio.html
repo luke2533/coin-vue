@@ -7,9 +7,7 @@
                 <h2>{{ username.capitalize() }}'s Portfolio</h2>
                 <h3>$total_value</h3>
                 <a href="{{ url_for('add_record') }}" class="prime-btn">Add new +</a>
-                <!-- DELETE LATER -->
                 <a href="{{ url_for('get_records', username=username) }}" class="prime-btn ml-2">Records</a>
-                <!-- DELETE LATER -->
             </div>
         </div>
     </div>
@@ -34,16 +32,18 @@
                         </thead>
 
                         <tbody class="crypto-table">
-                            {% for portfolio in portfolios %}
-                                <tr>
-                                    <td class="crypto-name">{{ portfolio.token_id }}</td>
-                                    <td>$35000</td>
-                                    <td>3.5%</td>
-                                    <td>{{ portfolio.holdings }}</td>
-                                    <td>${{ portfolio.value }}</td>
-                                    <td>${{ portfolio.profit_loss }}</td>
-                                    <td><a href="{{ url_for('get_records', username=username) }}">:</a></td>
-                                </tr>
+                            {% for i in portfolios %}
+                                {% set portfolio = portfolios[loop.index-1] %}
+                                {% set token = token_id[loop.index-1] %}
+                                    <tr>
+                                        <td class="crypto-name">{{ portfolio.token_id }}</td>
+                                        <td>{{ token.price }}</td>
+                                        <td>{{ token.day_percent }}</td>
+                                        <td>{{ portfolio.holdings }}</td>
+                                        <td>${{ portfolio.value }}</td>
+                                        <td>${{ portfolio.profit_loss }}</td>
+                                        <td><a href="{{ url_for('get_records', username=username) }}">:</a></td>
+                                    </tr>
                             {% endfor %}
                         </tbody>
                     </table>

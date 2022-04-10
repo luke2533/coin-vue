@@ -608,6 +608,12 @@ Additions:
 - Add record select token dropdown working
 - Fixed issue where portfolio records append twice
 
+### 6.40 Portfolio page displays correct token's price and 24hr percent change
+
+Additions:
+
+- Portfolio page displays correct token's price and 24hr percent change
+
 ## 7.0 Deployment
 
 ### 7.1 Local deployment

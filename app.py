@@ -1,5 +1,6 @@
 import os
 import json
+import requests
 from flask import (
     Flask, flash, render_template,
     redirect, request, session, url_for)
@@ -119,19 +120,50 @@ def logout():
 def portfolio():
     username = mongo.db.users.find_one(
             {"username": session["user"]})["username"]
-    tokens = crypto.crypto_top_50()
-
     portfolios = []
 
     if session["user"] == username:
         user_portfolio_display = (
             mongo.db.portfolios.find_one({"username": session["user"]}))
         if user_portfolio_display is not None:
-            # portfolio_id = user_portfolio_display["_id"]
             portfolios = user_portfolio_display["id"]
+            price = 0
+            day_percent = 0
+
+            results = {"id": []}
+
+            for token in portfolios:
+                tokens = token["tokens"]
+                print("-----------------")
+                print(tokens)
+
+                url = f"http://api.coincap.io/v2/assets/{ tokens }"
+
+                payload = {}
+                headers = {}
+
+                response = requests.request(
+                    "GET", url, headers=headers, data=payload)
+                json_data = json.loads(response.text.encode("utf8"))
+                coin_data = json_data["data"]
+
+                price = coin_data["priceUsd"]
+                day_percent = coin_data["changePercent24Hr"]
+
+                print(day_percent)
+                print(price)
+
+                new_results = results["id"]
+                new_results.append({
+                    "price": float(price),
+                    "day_percent": float(day_percent)
+                })
+
+            print(results)
+            token_id = results["id"]
 
     return render_template(("portfolio.html"), username=username,
-                           portfolios=portfolios, tokens=tokens)
+                           portfolios=portfolios, token_id=token_id)
 
 
 @app.route("/get_record/<username>")
