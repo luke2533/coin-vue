@@ -4,6 +4,56 @@ CoinVue is a cryptocurrency portfolio tracker and price tracker updating price m
 
 ## Table of contents
 
+- [CoinVue - Project 3](#coinvue---project-3)
+  * [Table of contents](#table-of-contents)
+  * [1.0 UX](#10-ux)
+    + [1.1 User goals](#11-user-goals)
+      - [1.1.1 Target audience](#111-target-audience)
+    + [1.2 User needs and goals](#12-user-needs-and-goals)
+      - [1.2.1 User needs:](#121-user-needs-)
+      - [1.2.2 How the user needs are met](#122-how-the-user-needs-are-met)
+    + [1.3 Developer and business goals](#13-developer-and-business-goals)
+      - [1.3.1 Goals of the business](#131-goals-of-the-business)
+    + [1.4 User stories](#14-user-stories)
+  * [2.0 Design choices](#20-design-choices)
+    + [2.1 Fonts](#21-fonts)
+    + [2.2 Icons](#22-icons)
+    + [2.3 Colors](#23-colors)
+    + [2.4 Wireframes](#24-wireframes)
+    + [2.5 Mockups](#25-mockups)
+  * [3.0 Features](#30-features)
+    + [3.1 Existing features](#31-existing-features)
+    + [3.2 Features left to implement](#32-features-left-to-implement)
+  * [4.0 Technologies used](#40-technologies-used)
+    + [4.1 HTML5](#41-html5)
+    + [4.2 CSS3](#42-css3)
+    + [4.3 Bootstrap 4.5](#43-bootstrap-45)
+    + [4.4 JavaScript](#44-javascript)
+    + [4.5 jQuery](#45-jquery)
+    + [4.6 Python 3](#46-python-3)
+    + [4.7 Flask](#47-flask)
+    + [4.8 MongoDB](#48-mongodb)
+    + [4.9 Coincap API](#49-coincap-api)
+  * [5.0 Testing](#50-testing)
+  * [6.0 Devlopment life cycle](#60-devlopment-life-cycle)
+    + [6.5 Set up for heroku](#65-set-up-for-heroku)
+    + [6.10 Added nav and style.css file](#610-added-nav-and-stylecss-file)
+    + [6.15 Sign up page CSS and responsive on all devices](#615-sign-up-page-css-and-responsive-on-all-devices)
+    + [6.20 Portfolio page basic structure and responsive on all pages](#620-portfolio-page-basic-structure-and-responsive-on-all-pages)
+    + [6.25 Record page styled and responsive on all devices](#625-record-page-styled-and-responsive-on-all-devices)
+    + [6.30 Successfully creates portfolio if user has no records](#630-successfully-creates-portfolio-if-user-has-no-records)
+    + [6.35 Sell record data subracts portfolio values and Issue #3 RESOLVED](#635-sell-record-data-subracts-portfolio-values-and-issue--3-resolved)
+    + [6.40 Portfolio page displays correct token's price and 24hr percent change](#640-portfolio-page-displays-correct-token-s-price-and-24hr-percent-change)
+    + [6.45 Testing complete](#645-testing-complete)
+  * [7.0 Deployment](#70-deployment)
+    + [7.1 Local deployment](#71-local-deployment)
+    + [7.2 Heroku deployment](#72-heroku-deployment)
+  * [8.0 Credits](#80-credits)
+    + [8.1 Content](#81-content)
+    + [8.2 Code](#82-code)
+
+<small><i><a href='http://ecotrust-canada.github.io/markdown-toc/'>Table of contents generated with markdown-toc</a></i></small>
+
 ## 1.0 UX
 
 ### 1.1 User goals
@@ -161,8 +211,6 @@ Record page Mobile wireframe:
 ![Record page mobile](static/wireframes/record-mobile.png)
 
 ### 2.5 Mockups
-
-[Mockup pdf](static/mockups/)
 
 Home Desktop mockup:
 
@@ -673,6 +721,12 @@ Additions:
 Additions:
 
 - Added mockups
+
+### 6.48 Added table of contents to README
+
+Additions:
+
+- Added table of contents to README
 
 ## 7.0 Deployment
 
