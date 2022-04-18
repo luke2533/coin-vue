@@ -166,87 +166,87 @@ Record page Mobile wireframe:
 
 Home Desktop mockup:
 
-![](static/mockups/.png)
+![Home Desktop](static/mockups/home-desktop-mock.png)
 
 Home Tablet mockup:
 
-![](static/mockups/.png)
+![Home Tablet](static/mockups/home-tablet-mock.png)
 
 Home Mobile mockup:
 
-![](static/mockups/.png)
+![Home Mobile](static/mockups/home-mobile-mock.png)
 
 Portfolio Desktop mockup:
 
-![](static/mockups/.png)
+![Portfolio Desktop](static/mockups/portfolio-desktop-mock.png)
 
 Portfolio Tablet mockup:
 
-![](static/mockups/.png)
+![Portfolio Tablet](static/mockups/portfolio-tablet-mock.png)
 
 Portfolio Mobile mockup:
 
-![](static/mockups/.png)
+![Portfolio Mobile](static/mockups/portfolio-mobile-mock.png)
 
 Sign up Desktop mockup:
 
-![](static/mockups/.png)
+![Sign up Desktop](static/mockups/signup-desktop-mock.png)
 
 Sign up Tablet mockup:
 
-![](static/mockups/.png)
+![Sign up Tablet](static/mockups/signup-tablet-mock.png)
 
 Sign up Mobile mockup:
 
-![](static/mockups/.png)
+![Sign up Mobile](static/mockups/signup-mobile-mock.png)
 
 Log in Desktop mockup:
 
-![](static/mockups/.png)
+![Log in Desktop](static/mockups/login-desktop-mock.png)
 
 Log in Tablet mockup:
 
-![](static/mockups/.png)
+![Log in Tablet](static/mockups/login-tablet-mock.png)
 
 Log in Mobile mockup:
 
-![](static/mockups/.png)
+![Log in Mobile](static/mockups/login-mobile-mock.png)
 
 Add record desktop mockup:
 
-![](static/mockups/.png)
+![Add record Desktop](static/mockups/add-desktop-mock.png)
 
 Add record tablet mockup:
 
-![](static/mockups/.png)
+![Add record Tablet](static/mockups/add-tablet-mock.png)
 
 Add record mobile mockup:
 
-![](static/mockups/.png)
+![Add record Mobile](static/mockups/add-mobile-mock.png)
 
 Edit record desktop mockup:
 
-![](static/mockups/.png)
+![Edit record Desktop](static/mockups/edit-desktop-mock.png)
 
 Edit record tablet mockup:
 
-![](static/mockups/.png)
+![Edit record Tablet](static/mockups/edit-tablet-mock.png)
 
 Edit record mobile mockup:
 
-![](static/mockups/.png)
+![Edit record Mobile](static/mockups/edit-mobile-mock.png)
 
 Record Desktop mockup:
 
-![](static/mockups/.png)
+![Record Desktop](static/mockups/record-desktop-mock.png)
 
 Record tablet mockup:
 
-![](static/mockups/.png)
+![Record Tablet](static/mockups/record-tablet-mock.png)
 
 Record Mobile mockup:
 
-![](static/mockups/.png)
+![Record Mobile](static/mockups/record-mobile-mock.png)
 
 ## 3.0 Features
 
@@ -667,6 +667,12 @@ Additions:
 - Minor changes to all HTML files footer margin
 - Added comments
 - Updated wireframes
+
+### 6.47 Added mockups
+
+Additions:
+
+- Added mockups
 
 ## 7.0 Deployment
 
