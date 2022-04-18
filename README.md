@@ -730,6 +730,12 @@ Additions:
 
 ### 6.49 Redeploy to heroku test
 
+### 6.50
+
+Additions:
+
+
+
 ## 7.0 Deployment
 
 ### 7.1 Local deployment
