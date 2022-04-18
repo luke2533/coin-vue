@@ -3,8 +3,9 @@
 
     <div class="container-fluid">
         <div class="row justify-content-center">
-            <div class="col-10 col-md-5 col-lg-4 col-xl-3">
+            <div class="col-10 col-md-5 col-lg-4 col-xl-3 lower-footer">
                 <form action="{{ url_for('login') }}" method="POST">
+                    <!-- Log in form -->
                     <h1 class="account-title">Log in</h1>
                     <input type="text" placeholder="Username" class="account-input" id="username" name="username" pattern="^[a-zA-Z0-9]{5,15}$" minlength="4" maxlength="15" required>
                     <br>

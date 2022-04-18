@@ -3,7 +3,7 @@
 
     <div class="container-fluid">
         <div class="row justify-content-center">
-            <div class="col-12 col-md-11 col-xl-8">
+            <div class="col-12 col-md-11 col-xl-8 lower-footer">
                 <h1 class="text-center">Records</h1>
                 <p class="scroll text-center">Drag the records table for more information</p>
                 <div class="table-overflow">
@@ -32,14 +32,14 @@
                                     <td class="notes-overflow">{{ record.notes }}</td>
                                     <td>${{ record.total }}</td>
                                     <td>
-                                        <!-- Need some sort of ID for record -->
                                         <form method="POST" action="{{ url_for('delete_record', record_id=record._id) }}">
                                             <a href="{{ url_for('edit_record', record_id=record._id) }}" class="record-link"><i class="fas fa-pen"></i></a>
                                             <button type="submit" class="record-link"><i class="fas fa-trash"></i></button>
                                         </form>
-                                        <!-- Delete record -->
+                                        <!-- Delete record form -->
                                     </td>
                                 </tr>
+                                <!-- Displays each transaction record -->
                             {% endfor %}
                         </tbody>
                     </table>

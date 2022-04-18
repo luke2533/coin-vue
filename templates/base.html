@@ -1,92 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" 
-        integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" 
-        crossorigin="anonymous" referrerpolicy="no-referrer" type="text/css"/>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
-        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
-        {% block styles %}
-        {% endblock %}
-    <title>CoinVue</title>
-</head>
-<body>
-    <header>
-        <!-- Nav bar -->
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" 
+            integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" 
+            crossorigin="anonymous" referrerpolicy="no-referrer" type="text/css"/>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+            integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
+            {% block styles %}
+            {% endblock %}
+        <title>CoinVue</title>
+    </head>
+    <body>
+        <header>
+            <!-- Nav bar -->
 
-        <nav class="navbar navbar-expand-lg nav-bar">
-            <a href="{{ url_for('coinvue') }}">
-                <img src="https://thumbs.dreamstime.com/b/blockchain-technology-icon-vector-block-chain-symbol-blockchain-technology-modern-icon-vector-block-chain-symbol-logo-element-106099068.jpg"
-                alt="CoinVue logo" class="logo"></a>
-            <a class="navbar-brand" href="{{ url_for('coinvue') }}"><h1 class="nav-title">CoinVue</h1></a>
-            <button class="mobile-menu navbar-toggler" type="button" data-toggle="collapse" data-target="#nav-menu" aria-controls="nav-menu" aria-expanded="false" aria-label="Toggle navigation">
-                <i class="fas fa-bars"></i>
-            </button>
-          
-            <div class="collapse navbar-collapse" id="nav-menu">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link btn-link" href="/">Home</a>
-                    </li>
-                    {% if session.user %}
-                        {% if username is not none %}
+            <nav class="navbar navbar-expand-lg nav-bar">
+                <a href="{{ url_for('coinvue') }}">
+                    <img src="https://thumbs.dreamstime.com/b/blockchain-technology-icon-vector-block-chain-symbol-blockchain-technology-modern-icon-vector-block-chain-symbol-logo-element-106099068.jpg"
+                    alt="CoinVue logo" class="logo"></a>
+                <a class="navbar-brand" href="{{ url_for('coinvue') }}"><h1 class="nav-title">CoinVue</h1></a>
+                <button class="mobile-menu navbar-toggler" type="button" data-toggle="collapse" data-target="#nav-menu" aria-controls="nav-menu" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fas fa-bars"></i>
+                </button>
+            
+                <div class="collapse navbar-collapse" id="nav-menu">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link btn-link" href="/">Home</a>
+                        </li>
+                        {% if session.user %}
+                            {% if username is not none %}
+                                <li class="nav-item">
+                                    <a class="nav-link btn-link" href="{{ url_for('portfolio') }}">My Portfolio</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link btn-link" href="{{ url_for('add_record') }}">Add record</a>
+                                </li>
+                            {% else %}
+                                <li class="nav-item">
+                                    <a class="nav-link btn-link" href="{{ url_for('add_record') }}">Add record</a>
+                                </li>
+                            {% endif %}
                             <li class="nav-item">
-                                <a class="nav-link btn-link" href="{{ url_for('portfolio') }}">My Portfolio</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link btn-link" href="{{ url_for('add_record') }}">Add record</a>
+                                <a class="nav-link btn-link link-bottom" href="{{ url_for('logout') }}">Log out</a>
                             </li>
                         {% else %}
                             <li class="nav-item">
-                                <a class="nav-link btn-link" href="{{ url_for('add_record') }}">Add record</a>
+                                <a class="nav-link btn-link" href="{{ url_for('login') }}">Log in</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link btn-link link-bottom" href="{{ url_for('signup') }}">Sign up</a>
                             </li>
                         {% endif %}
-                        <li class="nav-item">
-                            <a class="nav-link btn-link link-bottom" href="{{ url_for('logout') }}">Log out</a>
-                        </li>
-                    {% else %}
-                        <li class="nav-item">
-                            <a class="nav-link btn-link" href="{{ url_for('login') }}">Log in</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link btn-link link-bottom" href="{{ url_for('signup') }}">Sign up</a>
-                        </li>
-                    {% endif %}
-                </ul>
-            </div>
-        </nav>
+                    </ul>
+                </div>
+            </nav>
 
-        <!-- Nav bar -->
+            <!-- Nav bar -->
 
-    </header>
+        </header>
 
-    <section>
-        <!-- Messages -->
-        {% with messages = get_flashed_messages() %}
-            {% if messages %}
-                {% for message in messages %}
-                    <div class="row justify-content-center flashes">
-                        <div class="col-3">
-                            <h4 class="flash">{{ message }}</h4>
+        <section>
+            <!-- Messages -->
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="row justify-content-center flashes">
+                            <div class="col-3">
+                                <h4 class="flash">{{ message }}</h4>
+                            </div>
                         </div>
-                    </div>
-                {% endfor %}
-            {% endif %}
-        {% endwith %}
-    </section>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+        </section>
 
-    {% block content %}
-    {% endblock %}
+        {% block content %}
+        {% endblock %}
 
-    <footer>
         <footer>
+            <!-- Footer -->
             <div class="container-fluid footer">
                 <div class="row justify-content-center">
-                    <!-- Footer class can go in row -->
                     <div class="col-6 col-md-5 col-xl-4">
                         <h2 class="footer-title">Social media</h2>
                         <a href="https://facebook.com" target="_blank" class="footer-link footer-mobile-link"><i class="fab fa-facebook-square"></i> Facebook</a>
@@ -94,7 +93,7 @@
                         <a href="https://twitter.com" target="_blank" class="footer-link footer-mobile-link"><i class="fab fa-twitter"></i> Twitter</a>
                         <a href="https://instagram.com" target="_blank" class="footer-link footer-mobile-link"><i class="fab fa-instagram"></i> Instagram</a>
                     </div>
-    
+        
                     <div class="col-6 col-md-5 col-xl-4">
                         <h2 class="footer-title">Navigation</h2>
                         <a href="/" class="footer-link footer-mobile-link"><i class="fas fa-home"></i> Home</a>
@@ -106,18 +105,15 @@
                         {% endif %}
                     </div>
                 </div>
-            </div>    
-
+            </div>
+            <!-- Footer -->
         </footer>
-    </footer>
 
-    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js" 
-        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> -->
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
-    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
-    {% block scripts %}
-    {% endblock %}
-</body>
+        <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+        {% block scripts %}
+        {% endblock %}
+    </body>
 </html>

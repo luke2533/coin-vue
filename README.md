@@ -96,8 +96,6 @@ Text will be in [Exo-2](https://fonts.google.com/specimen/Exo+2?query=exo+2):
 
 ### 2.4 Wireframes
 
-[Wireframe pdf](static/wireframes/CoinVue.pdf)
-
 Home Desktop wireframe:
 
 ![Home page desktop](static/wireframes/home-desktop.png)
@@ -112,15 +110,15 @@ Home Mobile wireframe:
 
 Portfolio Desktop wireframe:
 
-![Portfolio page desktop](static/wireframes/portfolio-desktop.png)
+![Portfolio page desktop](static/wireframes/portfolio-desktop2.png)
 
 Portfolio Tablet wireframe:
 
-![Portfolio page tablet](static/wireframes/portfolio-tablet.png)
+![Portfolio page tablet](static/wireframes/portfolio-tablet2.png)
 
 Portfolio Mobile wireframe:
 
-![Portfolio page mobile](static/wireframes/portfolio-mobile.png)
+![Portfolio page mobile](static/wireframes/portfolio-mobile2.png)
 
 Sign up Desktop wireframe:
 
@@ -146,25 +144,21 @@ Log in Mobile wireframe:
 
 ![Log in page mobile](static/wireframes/login-mobile.png)
 
-Transaction Modal Universal wireframe:
+Add record universal wireframe:
 
-![Transaction modal universal](static/wireframes/transaction-universal.png)
+![Add record universal](static/wireframes/add-record-universal.png)
 
-Edit Modal Universal wireframe:
+Edit record universal wireframe:
 
-![Edit modal universal](static/wireframes/edit-universal.png)
+![Edit record universal](static/wireframes/edit-universal.png)
 
-Record Modal Desktop wireframe:
+Record page Desktop wireframe:
 
-![Record modal desktop](static/wireframes/record-desktop.png)
+![Record page desktop](static/wireframes/record-desktop.png)
 
-Record Modal Mobile wireframe:
+Record page Mobile wireframe:
 
-![Record modal mobile](static/wireframes/record-mobile.png)
-
-Delete Modal Universal wireframe:
-
-![Delete modal universal](static/wireframes/delete-universal.png)
+![Record page mobile](static/wireframes/record-mobile.png)
 
 ### 2.5 Mockups
 
@@ -218,23 +212,39 @@ Log in Mobile mockup:
 
 ![](static/mockups/.png)
 
-Transaction Modal Universal mockup:
+Add record desktop mockup:
 
 ![](static/mockups/.png)
 
-Edit Modal Universal mockup:
+Add record tablet mockup:
 
 ![](static/mockups/.png)
 
-Record Modal Desktop mockup:
+Add record mobile mockup:
 
 ![](static/mockups/.png)
 
-Record Modal Mobile mockup:
+Edit record desktop mockup:
 
 ![](static/mockups/.png)
 
-Delete Modal Universal mockup:
+Edit record tablet mockup:
+
+![](static/mockups/.png)
+
+Edit record mobile mockup:
+
+![](static/mockups/.png)
+
+Record Desktop mockup:
+
+![](static/mockups/.png)
+
+Record tablet mockup:
+
+![](static/mockups/.png)
+
+Record Mobile mockup:
 
 ![](static/mockups/.png)
 
@@ -649,6 +659,14 @@ Additions:
 
 - Small updates to README
 - Added testing
+
+### 6.46 Added comments and added wireframes
+
+Additions:
+
+- Minor changes to all HTML files footer margin
+- Added comments
+- Updated wireframes
 
 ## 7.0 Deployment
 

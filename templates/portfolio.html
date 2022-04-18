@@ -5,9 +5,10 @@
         <div class="row justify-content-center">
             <div class="col-10 col-md-11 col-xl-9">
                 <h2>{{ username.capitalize() }}'s Portfolio</h2>
-                <h3>${{ total_value }}</h3>
+                <h3 class="mb-3">${{ total_value }}</h3>
                 <a href="{{ url_for('add_record') }}" class="prime-btn">Add new +</a>
                 <a href="{{ url_for('get_records', username=username) }}" class="prime-btn ml-2">Records</a>
+                <!-- Total value of users portfolio -->
             </div>
         </div>
     </div>
@@ -16,7 +17,7 @@
 
     <div class="container-fluid">
         <div class="row justify-content-center">
-            <div class="col-11 col-xl-9">
+            <div class="col-11 col-xl-9 lower-portfolio-footer">
                 <div class="table-overflow">
                     <table class="table table-striped">
                         <thead class="table-dark">
@@ -47,6 +48,7 @@
                             {% endfor %}
                         </tbody>
                     </table>
+                    <!-- Displays users individual tokens holdings, value and portfit -->
                 </div>
                 <p class="scroll text-center">Drag the portfolio table for more information</p>
             </div>

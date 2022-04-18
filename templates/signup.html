@@ -3,9 +3,10 @@
 
     <div class="container-fluid">
         <div class="row justify-content-center">
-            <div class="col-10 col-md-5 col-lg-4 col-xl-3">
+            <div class="col-10 col-md-5 col-lg-4 col-xl-3 lower-footer">
                 <form action="{{ url_for('signup') }}" method="POST">
-                <h1 class="account-title">Sign up</h1>
+                    <!-- Sign up form -->
+                    <h1 class="account-title">Sign up</h1>
                     <input type="text" placeholder="Username" class="account-input" id="username" name="username" pattern="^[a-zA-Z0-9]{5,15}$" minlength="4" maxlength="15" required>
                     <br>
                     <input type="email" placeholder="Email" class="account-input" id="email" name="email" required>

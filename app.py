@@ -37,6 +37,7 @@ def coinvue():
         result["changePercent24Hr"] = "{:.4f}%".format(cryptoPercent)
         result["marketCapUsd"] = "$" + "{:.4f}".format(cryptoMcap)
         result["volumeUsd24Hr"] = "$" + "{:.4f}".format(cryptoVolume)
+        # Renders and formats coincap api data to home page
 
     return render_template("index.html", results=results)
 
@@ -63,6 +64,7 @@ def signup():
         if email != check_email:
             flash("Please make sure the emails match")
             return redirect(url_for("signup"))
+        # Checks to see email and confirm email are the same
 
         new_user = {
             "username": request.form.get("username").lower(),
@@ -70,6 +72,7 @@ def signup():
             "password": generate_password_hash(request.form.get("password"))
         }
         mongo.db.users.insert_one(new_user)
+        # Adds new user info to mongodb and generates password hash for security
 
         session["user"] = request.form.get("username").lower()
         flash("Register complete")
@@ -89,7 +92,6 @@ def login():
                 session["user"] = request.form.get("username")
                 flash("Welcome, {}".format(request.form.get("username")))
                 return redirect(url_for("coinvue"))
-                # Change to portfolio
             else:
                 # Wrong password
                 flash("Inccorect username and/or password")
@@ -106,6 +108,7 @@ def login():
 def logout():
     flash("You have been logged out")
     session.pop("user")
+    # Logs user out
     return redirect(url_for("login"))
 
 
@@ -125,6 +128,7 @@ def portfolio():
 
             results = {"id": []}
             total = []
+            # Checks to see if user portfolio exisits
 
             for token in portfolios:
                 tokens = token["tokens"]
@@ -138,6 +142,8 @@ def portfolio():
                     "GET", url, headers=headers, data=payload)
                 json_data = json.loads(response.text.encode("utf8"))
                 coin_data = json_data["data"]
+
+                # Calls upon coincap api to retrieve token data
 
                 price = coin_data["priceUsd"]
                 day_percent = coin_data["changePercent24Hr"]
@@ -157,6 +163,7 @@ def portfolio():
 
                 total.append(value)
                 total_value = sum(total)
+                # Adds token values together to make total value
 
         else:
             return redirect(url_for("add_record"))
@@ -174,6 +181,7 @@ def get_records(username):
     if session["user"] == username:
         user_records = mongo.db.records.find({"username": session["user"]}
                                              ).sort("date", -1)
+    # Searches for records that match the session user
 
     return render_template(("records.html"), username=username,
                            user_records=user_records)
@@ -210,14 +218,13 @@ def add_record():
             "total": float(total)
         }
         mongo.db.records.insert_one(records)
+        # Adds the record to mongoDB
 
 # =======================================================
 #                       PORTFOILIO
 # =======================================================
 
         token_price = tokens
-        print(token_price)
-
         url = f"http://api.coincap.io/v2/assets/{ token_price }"
 
         payload = {}
@@ -229,7 +236,8 @@ def add_record():
         coin_data = json_data["data"]
 
         price = float(coin_data["priceUsd"])
-        print(price)
+
+        # Calls upon coincap api to retrieve token data
 
         value = float(price) * float(quantity)
         print(value)
@@ -380,6 +388,7 @@ def edit_record(record_id):
         }
         mongo.db.records.update_one({"_id": ObjectId(record_id)},
                                     {"$set": update_record})
+        # Changes the record values on mongoDB
 
 # =======================================================
 #                       PORTFOILIO
@@ -421,9 +430,9 @@ def edit_record(record_id):
             "GET", url, headers=headers, data=payload)
         json_data = json.loads(response.text.encode("utf8"))
         coin_data = json_data["data"]
+        # Calls upon coincap api to retrieve token data
 
         price = float(coin_data["priceUsd"])
-        print(price)
 
         if find_portfolio_user == username and token_id_exists is True:
             _id = user_portfolio_contents["_id"]
@@ -433,9 +442,12 @@ def edit_record(record_id):
             old_total = record["total"]
             old_holdings = token_id_object.get("holdings")
             old_grand_total = token_id_object.get("grand_total")
+            # Gets token old values
 
             holdings = float(old_holdings) - float(old_quantity)
             grand_total = float(old_grand_total) - float(old_total)
+            # Removes the record values from the portfolio holdings
+            # and portfolio total
 
             new_holdings = (float(new_quantity) +
                             float(holdings))
@@ -445,6 +457,7 @@ def edit_record(record_id):
                                float(grand_total))
             new_profit = (float(new_value) -
                           float(new_grand_total))
+            # Calculates new values
 
             portfolio_contents[token_id_object_position] = {
                 "tokens": tokens,
@@ -456,6 +469,7 @@ def edit_record(record_id):
             }
             mongo.db.portfolios.update_one({"_id": _id}, {"$set":
                                            {"id": portfolio_contents}})
+            # Updates the portfolio with new values
 
         flash("Record successfully updated")
         return redirect(url_for("get_records", username=username))
@@ -499,7 +513,6 @@ def delete_record(record_id):
 
         tokens = token_id_object.get("tokens")
         token_price = tokens
-        print(token_price)
 
         url = f"http://api.coincap.io/v2/assets/{ token_price }"
 
@@ -512,7 +525,7 @@ def delete_record(record_id):
         coin_data = json_data["data"]
 
         price = float(coin_data["priceUsd"])
-        print(price)
+        # Calls upon coincap api to retrieve token data
 
         if find_portfolio_user == username and token_id_exists is True:
             _id = user_portfolio_contents["_id"]
@@ -525,6 +538,7 @@ def delete_record(record_id):
             updated_value = float(price) * float(updated_holdings)
             updated_grand_total = float(grand_total) - float(total)
             updated_profit = float(updated_value) - (updated_grand_total)
+            # Removes the record values from the portfolio values
 
             tokens = token_id_object.get("tokens")
 
@@ -538,7 +552,9 @@ def delete_record(record_id):
             }
             mongo.db.portfolios.update_one({"_id": _id}, {"$set":
                                            {"id": portfolio_contents}})
+            # Updates the portfolio values on mongoDB
             mongo.db.records.delete_one({"_id": ObjectId(record_id)})
+            # Deletes the record from mongoDB
 
     flash("Record successfully removed")
     return redirect(url_for("get_records", record=record, username=username))

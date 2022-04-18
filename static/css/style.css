@@ -44,6 +44,19 @@ button {
     min-width: 250px;
 }
 
+.lower-footer {
+    margin-top: 50px;
+    margin-bottom: 175px;
+}
+
+.lower-portfolio-footer {
+    margin-bottom: 175px;
+}
+
+.lower-add-footer {
+    margin-bottom: 50px;
+}
+
 /* Universal */
 
 /* Nav-bar */

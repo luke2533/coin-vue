@@ -19,3 +19,5 @@ class Crypto:
 
         coin_data = json_data["data"]
         return coin_data
+
+        # Calls upon the api to fetch token data
