@@ -43,7 +43,7 @@
                                     <td>{{ result.changePercent24Hr }}</td>
                                     <td>{{ result.marketCapUsd }}</td>
                                     <td>{{ result.volumeUsd24Hr }}</td>
-                                    <td><a href="{{ url_for('add_record') }}">+</a></td>
+                                    <td><a href="{{ url_for('add_record') }}" class="record-link"><i class="fas fa-plus"></i></a></td>
                                 </tr>
                             {% endfor %}
                         </tbody>
