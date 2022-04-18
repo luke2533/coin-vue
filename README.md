@@ -728,6 +728,8 @@ Additions:
 
 - Added table of contents to README
 
+### 6.49 Redeploy to heroku test
+
 ## 7.0 Deployment
 
 ### 7.1 Local deployment

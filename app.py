@@ -72,7 +72,8 @@ def signup():
             "password": generate_password_hash(request.form.get("password"))
         }
         mongo.db.users.insert_one(new_user)
-        # Adds new user info to mongodb and generates password hash for security
+        # Adds new user info to mongodb and generates password hash for
+        # security
 
         session["user"] = request.form.get("username").lower()
         flash("Register complete")
