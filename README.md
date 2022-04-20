@@ -730,11 +730,7 @@ Additions:
 
 ### 6.49 Redeploy to heroku test
 
-### 6.50
-
-Additions:
-
-
+### 6.50 Deployed to heroku fixed debug and URI issue
 
 ## 7.0 Deployment
 
