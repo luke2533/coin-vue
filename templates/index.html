@@ -47,6 +47,7 @@
                                         {% if username is not none %}
                                             <td><a href="{{ url_for('add_record') }}" class="record-link"><i class="fas fa-plus"></i></a></td>
                                         {% endif %}
+                                    {% else %}
                                         <td><a href="{{ url_for('login') }}" class="record-link"><i class="fas fa-plus"></i></a></td>
                                     {% endif %}
                                 </tr>
