@@ -43,7 +43,12 @@
                                     <td>{{ result.changePercent24Hr }}</td>
                                     <td>{{ result.marketCapUsd }}</td>
                                     <td>{{ result.volumeUsd24Hr }}</td>
-                                    <td><a href="{{ url_for('add_record') }}" class="record-link"><i class="fas fa-plus"></i></a></td>
+                                    {% if session.user %}
+                                        {% if username is not none %}
+                                            <td><a href="{{ url_for('add_record') }}" class="record-link"><i class="fas fa-plus"></i></a></td>
+                                        {% endif %}
+                                        <td><a href="{{ url_for('login') }}" class="record-link"><i class="fas fa-plus"></i></a></td>
+                                    {% endif %}
                                 </tr>
                             {% endfor %}
                         </tbody>
