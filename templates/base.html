@@ -99,11 +99,12 @@
                         <a href="/" class="footer-link footer-mobile-link"><i class="fas fa-home"></i> Home</a>
                         {% if session.user %}
                             {% if username is not none %}
-                                <a href="{{ url_for('logout') }}" class="footer-link footer-mobile-link"><i class="fas fa-user"></i> Log out</a>
                                 <a href="{{ url_for('portfolio') }}" class="footer-link footer-mobile-link"><i class="fas fa-coins"></i> My Portfolio</a>
-                            {% else %}
-                                <a href="{{ url_for('login') }}" class="footer-link footer-mobile-link"><i class="fas fa-user"></i> Log in</a>
+                                <a href="{{ url_for('logout') }}" class="footer-link footer-mobile-link"><i class="fas fa-user"></i> Log out</a>
                             {% endif %}
+                        {% else %}
+                            <a href="{{ url_for('login') }}" class="footer-link footer-mobile-link"><i class="fas fa-coins"></i> My Portfolio</a>
+                            <a href="{{ url_for('login') }}" class="footer-link footer-mobile-link"><i class="fas fa-user"></i> Log in</a>
                         {% endif %}
                     </div>
                 </div>
